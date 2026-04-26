@@ -221,12 +221,16 @@ az deployment group create \
 
 | Secret | Description |
 |--------|-------------|
-| `AZURE_STATIC_WEB_APPS_API_TOKEN` | Azure SWA deployment token |
-| `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` | Azure Functions publish profile |
 | `AZURE_CREDENTIALS` | Azure service principal JSON (tenant: `pringa.onmicrosoft.com`) |
 | `AZURE_SUBSCRIPTION_ID` | Azure subscription ID: `c7db7efa-b163-448a-8af0-23062dc21f5a` |
 | `POSTGRES_ADMIN_PASSWORD` | PostgreSQL admin password |
 | `JWT_SECRET` | JWT signing secret |
+
+> **Note:** `AZURE_STATIC_WEB_APPS_API_TOKEN` is **no longer required** as a GitHub secret.  
+> The `deploy-frontend-angular.yml` workflow logs in via `azure/login@v2` using `AZURE_CREDENTIALS` and then fetches the SWA deployment token automatically with:
+> ```bash
+> az staticwebapp secrets list --name natyatheerth-prod-web --resource-group natya-theerth-prod-rg --query "properties.apiKey" -o tsv
+> ```
 
 ---
 
