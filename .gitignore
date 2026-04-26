@@ -1,28 +1,49 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
-
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
-
-# Environment files
-/.env
-
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Logs
+# ─── Node / npm ────────────────────────────────────────────
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+
+# ─── Angular ───────────────────────────────────────────────
+frontend-angular/dist/
+frontend-angular/.angular/
+frontend-angular/out-tsc/
+
+# ─── Ionic / Capacitor ─────────────────────────────────────
+mobile-ionic/dist/
+mobile-ionic/www/
+mobile-ionic/.angular/
+mobile-ionic/android/
+mobile-ionic/ios/
+
+# ─── Azure Functions ───────────────────────────────────────
+api-functions/dist/
+api-functions/local.settings.json
+
+# ─── Environment / Secrets ─────────────────────────────────
+.env
+.env.*
+!.env.example
+*.local
+
+# ─── IDE / OS ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Logs ──────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Coverage ──────────────────────────────────────────────
+coverage/
+.nyc_output/
+
+# ─── Build artifacts ───────────────────────────────────────
+*.js.map
+*.d.ts.map

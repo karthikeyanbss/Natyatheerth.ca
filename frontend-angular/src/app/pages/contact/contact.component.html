@@ -1,0 +1,95 @@
+<div class="page-header">
+  <h1>Contact Us</h1>
+  <p>We'd love to hear from you</p>
+</div>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="grid grid--2" style="gap:4rem;align-items:flex-start">
+
+      <!-- Contact Info -->
+      <div>
+        <h2 style="color:var(--color-primary);margin-bottom:2rem">Get in Touch</h2>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem">
+          <div style="display:flex;gap:1rem;align-items:flex-start;padding:1.5rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)">
+            <span style="font-size:1.5rem">📧</span>
+            <div>
+              <strong style="color:var(--color-primary)">Email</strong><br>
+              <a href="mailto:sruthig@natyatheerth.com">sruthig&#64;natyatheerth.com</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;padding:1.5rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)">
+            <span style="font-size:1.5rem">📞</span>
+            <div>
+              <strong style="color:var(--color-primary)">Phone / WhatsApp</strong><br>
+              <a href="tel:+19024418675">+1 902-441-8675</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;padding:1.5rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)">
+            <span style="font-size:1.5rem">📍</span>
+            <div>
+              <strong style="color:var(--color-primary)">Location</strong><br>
+              Halifax, Nova Scotia, Canada<br>
+              <span style="font-size:0.9rem;color:var(--color-text-light)">(Studio address shared upon registration)</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:1.5rem;background:var(--color-primary);border-radius:var(--radius-md);color:var(--color-cream)">
+          <h4 style="color:var(--color-gold);margin-bottom:0.5rem">Response Time</h4>
+          <p style="font-size:0.95rem;line-height:1.7">We typically respond within 24–48 hours. For urgent enquiries, please call or WhatsApp directly.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div style="background:var(--color-white);padding:2.5rem;border-radius:var(--radius-md);box-shadow:var(--shadow-md)">
+        <h2 style="color:var(--color-primary);margin-bottom:2rem">Send a Message</h2>
+
+        <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+        <div *ngIf="error" class="alert alert-error">{{ error }}</div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" formControlName="name" placeholder="Your full name">
+            <span *ngIf="hasError('name','required')" class="error-message">Name is required</span>
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" formControlName="email" placeholder="your@email.com">
+            <span *ngIf="hasError('email','required')" class="error-message">Email is required</span>
+            <span *ngIf="hasError('email','email')" class="error-message">Please enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label>Phone (optional)</label>
+            <input type="tel" formControlName="phone" placeholder="+1 902-000-0000">
+          </div>
+          <div class="form-group">
+            <label>Subject *</label>
+            <select formControlName="subject">
+              <option value="">Select a subject...</option>
+              <option value="registration">Class Registration Enquiry</option>
+              <option value="schedule">Schedule Information</option>
+              <option value="fees">Fee Enquiry</option>
+              <option value="private">Private Lessons</option>
+              <option value="performance">Performance / Event</option>
+              <option value="other">Other</option>
+            </select>
+            <span *ngIf="hasError('subject','required')" class="error-message">Please select a subject</span>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea formControlName="message" placeholder="Your message..." rows="5"></textarea>
+            <span *ngIf="hasError('message','required')" class="error-message">Message is required</span>
+            <span *ngIf="hasError('message','minlength')" class="error-message">Please write at least 10 characters</span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%" [disabled]="submitting">
+            {{ submitting ? 'Sending...' : 'Send Message' }}
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

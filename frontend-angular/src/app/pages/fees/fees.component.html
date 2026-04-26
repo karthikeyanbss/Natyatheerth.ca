@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>Fees</h1>
+  <p>Transparent and affordable pricing for every student</p>
+</div>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Fee Structure</h2>
+      <div class="divider"></div>
+      <p class="subtitle">All fees are in Canadian Dollars (CAD). Payment is accepted by e-transfer or cash.</p>
+    </div>
+
+    <div class="table-wrapper" style="margin-bottom:3rem">
+      <table>
+        <thead>
+          <tr>
+            <th>Class Type</th>
+            <th>Level</th>
+            <th>Frequency</th>
+            <th>Fee</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fee of fees">
+            <td><strong>{{ fee.type }}</strong></td>
+            <td>{{ fee.level }}</td>
+            <td>{{ fee.frequency }}</td>
+            <td style="color:var(--color-primary);font-weight:700">{{ fee.fee }}</td>
+            <td style="font-size:0.9rem;color:var(--color-text-light)">{{ fee.notes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid--auto">
+      <div style="padding:2rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border-top:4px solid var(--color-gold)">
+        <h4 style="color:var(--color-primary);margin-bottom:0.75rem">💳 Payment Methods</h4>
+        <ul style="padding-left:1.25rem;line-height:2;color:var(--color-text)">
+          <li>Email Money Transfer (Interac e-Transfer)</li>
+          <li>Cash (at time of class)</li>
+          <li>Monthly or termly payment options</li>
+        </ul>
+      </div>
+      <div style="padding:2rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border-top:4px solid var(--color-gold)">
+        <h4 style="color:var(--color-primary);margin-bottom:0.75rem">🌟 Discounts</h4>
+        <ul style="padding-left:1.25rem;line-height:2;color:var(--color-text)">
+          <li>Sibling discount: 10% off second sibling</li>
+          <li>Annual payment: 1 month free</li>
+          <li>Financial hardship: please speak to Guru Sruthi</li>
+        </ul>
+      </div>
+      <div style="padding:2rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border-top:4px solid var(--color-gold)">
+        <h4 style="color:var(--color-primary);margin-bottom:0.75rem">📋 Policies</h4>
+        <ul style="padding-left:1.25rem;line-height:2;color:var(--color-text)">
+          <li>1-month notice for withdrawal</li>
+          <li>Missed classes: no refund (make-up available)</li>
+          <li>Registration fee: $20 (one-time, new students)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <a routerLink="/register" class="btn btn-primary btn-lg">Register Now</a>
+      &nbsp;&nbsp;
+      <a routerLink="/contact" class="btn btn-outline-primary btn-lg">Ask a Question</a>
+    </div>
+  </div>
+</section>

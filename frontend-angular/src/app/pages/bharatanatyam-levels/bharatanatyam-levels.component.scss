@@ -1,0 +1,5 @@
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:auto"] {
+    grid-template-columns: 1fr !important;
+  }
+}

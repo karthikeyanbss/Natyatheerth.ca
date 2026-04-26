@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "prod"
+    },
+    "location": {
+      "value": "canadaeast"
+    },
+    "appName": {
+      "value": "natyatheerth"
+    },
+    "postgresAdminUser": {
+      "value": "natyaadmin"
+    },
+    "postgresAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/{subscriptionId}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{vaultName}"
+        },
+        "secretName": "postgres-admin-password"
+      }
+    },
+    "jwtSecret": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/{subscriptionId}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{vaultName}"
+        },
+        "secretName": "jwt-secret"
+      }
+    },
+    "adminEmail": {
+      "value": "sruthig@natyatheerth.com"
+    }
+  }
+}

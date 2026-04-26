@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title style="color:#D4AF37">Class Schedule</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="loading" style="text-align:center;padding:3rem">
+    <ion-spinner name="crescent" color="danger"></ion-spinner>
+  </div>
+
+  <ion-list *ngIf="!loading">
+    <ion-item *ngFor="let cls of classes">
+      <ion-label>
+        <h2 style="color:#8B1A1A;font-weight:700">{{ cls.name }}</h2>
+        <p>{{ cls.dayOfWeek }} · {{ cls.startTime }}<span *ngIf="cls.endTime"> – {{ cls.endTime }}</span></p>
+        <p>{{ cls.description }}</p>
+      </ion-label>
+      <ion-badge slot="end" color="warning">{{ cls.level }}</ion-badge>
+    </ion-item>
+    <ion-item *ngIf="classes.length === 0">
+      <ion-label style="text-align:center;color:#999">No classes available</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

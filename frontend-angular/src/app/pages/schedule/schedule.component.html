@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h1>Class Schedule</h1>
+  <p>Find the class that fits your schedule</p>
+</div>
+
+<section class="section bg-cream">
+  <div class="container">
+
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <div *ngIf="!loading">
+      <div class="section-heading">
+        <h2>Current Schedule</h2>
+        <div class="divider"></div>
+        <p class="subtitle">Halifax, NS — Classes run September through June</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Level</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Format</th>
+              <th>Capacity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cls of classes">
+              <td>
+                <strong>{{ cls.name }}</strong>
+                <br><span style="font-size:0.85rem;color:var(--color-text-light)">{{ cls.description }}</span>
+              </td>
+              <td><span class="badge badge-primary">{{ cls.level }}</span></td>
+              <td>{{ cls.dayOfWeek }}</td>
+              <td>{{ cls.startTime }}<span *ngIf="cls.endTime"> – {{ cls.endTime }}</span></td>
+              <td>
+                <span [class]="cls.mode === 'online' ? 'badge badge-gold' : 'badge badge-green'">
+                  {{ getModeLabel(cls.mode) }}
+                </span>
+              </td>
+              <td>{{ cls.capacity === 1 ? 'Limited' : cls.capacity + ' spots' }}</td>
+              <td><a routerLink="/register" class="btn btn-primary btn-sm">Register</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:3rem;padding:2rem;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)">
+        <h3 style="color:var(--color-primary);margin-bottom:1rem">Schedule Notes</h3>
+        <ul style="padding-left:1.25rem;line-height:2.2;color:var(--color-text)">
+          <li>Classes are held at our Halifax studio — address provided upon registration</li>
+          <li>Online classes are available for all levels via Google Meet or Zoom</li>
+          <li>Private sessions can be scheduled at mutually convenient times</li>
+          <li>Summer intensive workshops are announced separately</li>
+          <li>Trial classes available — contact us to arrange</li>
+        </ul>
+      </div>
+
+      <div style="text-align:center;margin-top:3rem">
+        <a routerLink="/register" class="btn btn-primary btn-lg">Register for a Class</a>
+        &nbsp;&nbsp;
+        <a routerLink="/contact" class="btn btn-outline-primary btn-lg">Ask a Question</a>
+      </div>
+    </div>
+
+  </div>
+</section>

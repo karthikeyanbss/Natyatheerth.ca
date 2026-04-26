@@ -1,0 +1,7 @@
+{
+  "name": "Natya Theerth",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

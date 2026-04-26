@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title style="color:#D4AF37">Register for a Class</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submit()" style="padding:1rem">
+    <ion-item>
+      <ion-label position="stacked">First Name *</ion-label>
+      <ion-input [(ngModel)]="form.firstName" name="firstName" required placeholder="First name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Last Name *</ion-label>
+      <ion-input [(ngModel)]="form.lastName" name="lastName" required placeholder="Last name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Age *</ion-label>
+      <ion-input [(ngModel)]="form.age" name="age" type="number" required placeholder="Age"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email *</ion-label>
+      <ion-input [(ngModel)]="form.email" name="email" type="email" required placeholder="email@example.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Phone *</ion-label>
+      <ion-input [(ngModel)]="form.phone" name="phone" type="tel" required placeholder="+1 902-000-0000"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Format</ion-label>
+      <ion-select [(ngModel)]="form.mode" name="mode">
+        <ion-select-option value="in_person">In-Person</ion-select-option>
+        <ion-select-option value="online">Online</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Level</ion-label>
+      <ion-select [(ngModel)]="form.level" name="level">
+        <ion-select-option value="beginner">Beginner</ion-select-option>
+        <ion-select-option value="elementary">Elementary</ion-select-option>
+        <ion-select-option value="intermediate">Intermediate</ion-select-option>
+        <ion-select-option value="advanced">Advanced</ion-select-option>
+        <ion-select-option value="not_sure">Not Sure</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div style="padding:1rem">
+      <ion-button expand="block" color="danger" type="submit" [disabled]="submitting">
+        {{ submitting ? 'Submitting...' : 'Submit Registration' }}
+      </ion-button>
+    </div>
+  </form>
+
+  <ion-toast [isOpen]="showToast" [message]="toastMessage" [color]="toastColor" duration="4000" (didDismiss)="showToast=false"></ion-toast>
+</ion-content>
