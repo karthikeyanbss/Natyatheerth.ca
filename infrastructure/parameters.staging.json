@@ -32,6 +32,18 @@
     },
     "adminEmail": {
       "value": "sruthig@natyatheerth.com"
+    },
+    "entraAdminObjectId": {
+      "value": ""
+    },
+    "entraAdminTenantId": {
+      "value": ""
+    },
+    "entraAdminName": {
+      "value": ""
+    },
+    "entraAdminPrincipalType": {
+      "value": "ServicePrincipal"
     }
   }
 }
