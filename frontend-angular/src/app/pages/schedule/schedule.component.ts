@@ -4,6 +4,7 @@ import { ClassItem } from '../../models';
 
 @Component({
   selector: 'app-schedule',
+  standalone: false,
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
 })

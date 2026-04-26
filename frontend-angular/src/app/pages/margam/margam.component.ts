@@ -11,6 +11,7 @@ interface MargamItem {
 
 @Component({
   selector: 'app-margam',
+  standalone: false,
   templateUrl: './margam.component.html',
   styleUrls: ['./margam.component.scss']
 })

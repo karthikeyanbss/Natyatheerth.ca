@@ -9,6 +9,7 @@ interface AdavuCategory {
 
 @Component({
   selector: 'app-adavus',
+  standalone: false,
   templateUrl: './adavus.component.html',
   styleUrls: ['./adavus.component.scss']
 })
