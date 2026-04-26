@@ -44,7 +44,18 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Check if Azure Function App exists
+        id: check-app
+        run: |
+          if az functionapp show --name "${{ env.AZURE_FUNCTIONAPP_NAME }}" --query id --output tsv 2>/dev/null; then
+            echo "app_exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "app_exists=false" >> "$GITHUB_OUTPUT"
+            echo "Azure Function App '${{ env.AZURE_FUNCTIONAPP_NAME }}' not found. Skipping deployment."
+          fi
+
       - name: Deploy to Azure Functions
+        if: steps.check-app.outputs.app_exists == 'true'
         uses: Azure/functions-action@v1
         with:
           app-name:    ${{ env.AZURE_FUNCTIONAPP_NAME }}
