@@ -17,7 +17,7 @@
     "postgresAdminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/{vaultName}"
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-prod-kv"
         },
         "secretName": "postgres-admin-password"
       }
@@ -25,7 +25,7 @@
     "jwtSecret": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/{vaultName}"
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-prod-kv"
         },
         "secretName": "jwt-secret"
       }

@@ -186,13 +186,21 @@ az account set --subscription c7db7efa-b163-448a-8af0-23062dc21f5a
 # 3. Create resource group
 az group create --name natya-theerth-prod-rg --location canadaeast
 
-# 4. Deploy infrastructure
+# 4. Create Key Vault and store secrets (first-time setup)
+az keyvault create \
+  --name natyatheerth-prod-kv \
+  --resource-group natya-theerth-prod-rg \
+  --location canadaeast
+
+az keyvault secret set --vault-name natyatheerth-prod-kv --name postgres-admin-password --value "<YOUR_PASSWORD>"
+az keyvault secret set --vault-name natyatheerth-prod-kv --name jwt-secret --value "<YOUR_SECRET>"
+
+# 5. Deploy infrastructure
 az deployment group create \
   --subscription c7db7efa-b163-448a-8af0-23062dc21f5a \
   --resource-group natya-theerth-prod-rg \
   --template-file infrastructure/main.bicep \
-  --parameters infrastructure/parameters.json \
-  --parameters postgresAdminPassword="<YOUR_PASSWORD>" jwtSecret="<YOUR_SECRET>"
+  --parameters infrastructure/parameters.json
 ```
 
 > **Azure Portal:** https://portal.azure.com/#@pringa.onmicrosoft.com/resource/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/overview
