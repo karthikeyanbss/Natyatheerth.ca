@@ -69,10 +69,11 @@ module functions 'modules/functions.bicep' = {
 
 // PostgreSQL Flexible Server
 // Note: Microsoft.DBforPostgreSQL/flexibleServers is offer-restricted in canadaeast; canadacentral is used instead.
+// Note: Using 'psql' suffix to avoid name conflict from previously failed canadaeast deployment reservation.
 module postgresql 'modules/postgresql.bicep' = {
   name: 'postgresql'
   params: {
-    name: '${prefix}-pg'
+    name: '${prefix}-psql'
     location: 'canadacentral'
     tags: tags
     adminUser: postgresAdminUser
