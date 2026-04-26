@@ -8,6 +8,12 @@ param databaseName string
 param skuName      string = 'Standard_B1ms'
 param skuTier      string = 'Burstable'
 
+@description('Entra ID (Azure AD) principal name to set as PostgreSQL administrator (e.g. user@tenant.onmicrosoft.com)')
+param entraAdminUser string = ''
+
+@description('Entra ID (Azure AD) object ID of the administrator principal')
+param entraAdminObjectId string = ''
+
 resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2023-06-01-preview' = {
   name:     name
   location: location
@@ -27,9 +33,20 @@ resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2023-06-01-preview'
     }
     highAvailability: { mode: 'Disabled' }
     authConfig: {
-      activeDirectoryAuth: 'Disabled'
+      activeDirectoryAuth: 'Enabled'
       passwordAuth: 'Enabled'
+      tenantId: tenant().tenantId
     }
+  }
+}
+
+resource entraAdmin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2023-06-01-preview' = if (!empty(entraAdminObjectId)) {
+  parent: postgres
+  name:   entraAdminObjectId
+  properties: {
+    principalName: entraAdminUser
+    principalType: 'User'
+    tenantId:      tenant().tenantId
   }
 }
 

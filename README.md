@@ -196,7 +196,11 @@ az keyvault create \
 az keyvault secret set --vault-name natyatheerth-prod-kv --name postgres-admin-password --value "<YOUR_PASSWORD>"
 az keyvault secret set --vault-name natyatheerth-prod-kv --name jwt-secret --value "<YOUR_SECRET>"
 
-# 5. Deploy infrastructure
+# 5. Look up the Entra ID object ID of the PostgreSQL admin user and update parameters.json
+ENTRA_OBJECT_ID=$(az ad user show --id karthik@pringa.onmicrosoft.com --query id -o tsv)
+# Set the value of "postgresEntraAdminObjectId" in infrastructure/parameters.json to $ENTRA_OBJECT_ID
+
+# 6. Deploy infrastructure
 az deployment group create \
   --subscription c7db7efa-b163-448a-8af0-23062dc21f5a \
   --resource-group natya-theerth-prod-rg \

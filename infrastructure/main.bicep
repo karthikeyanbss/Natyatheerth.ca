@@ -28,6 +28,12 @@ param jwtSecret string
 @description('Admin email address')
 param adminEmail string = 'sruthig@natyatheerth.com'
 
+@description('Entra ID (Azure AD) principal name to set as PostgreSQL administrator (e.g. karthik@pringa.onmicrosoft.com)')
+param postgresEntraAdminUser string = 'karthik@pringa.onmicrosoft.com'
+
+@description('Entra ID (Azure AD) object ID of the PostgreSQL administrator (run: az ad user show --id <upn> --query id -o tsv)')
+param postgresEntraAdminObjectId string = ''
+
 var prefix = '${appName}-${environment}'
 var tags = {
   project: 'Natya Theerth Kalai Koodam'
@@ -79,6 +85,8 @@ module postgresql 'modules/postgresql.bicep' = {
     adminUser: postgresAdminUser
     adminPassword: postgresAdminPassword
     databaseName: 'natyatheerth'
+    entraAdminUser: postgresEntraAdminUser
+    entraAdminObjectId: postgresEntraAdminObjectId
   }
 }
 
