@@ -3,7 +3,7 @@
 > **நாட்ய தீர்த்த கலைக் கூடம்** — Where every step tells a story.  
 > _"கலையின் தீர்த்தத்தில் நடனம்" (Dance in the sacred flow of art)_
 
-Classical Bharatanatyam dance school based in **Halifax, Nova Scotia, Canada**, founded and led by **Guru Sruthi Gopinath**.
+Classical Bharatanatyam dance school based in **Halifax, Nova Scotia, Canada**, founded and led by **Guru Sruthi Ganesapandian**.
 
 ---
 
@@ -29,7 +29,7 @@ Full-featured Angular 17 web app with standalone components, lazy-loaded modules
 | Route | Description |
 |-------|-------------|
 | `/` | Home — hero, about preview, video, classes |
-| `/about-guru` | Full biography of Guru Sruthi Gopinath |
+| `/about-guru` | Full biography of Guru Sruthi Ganesapandian |
 | `/bharatanatyam-levels` | Beginner → Margam learning path |
 | `/adavus` | Adavu categories and descriptions |
 | `/margam` | Classical margam structure |
@@ -238,7 +238,7 @@ az deployment group create \
 
 | | |
 |-|-|
-| **Guru** | Sruthi Gopinath |
+| **Guru** | Sruthi Ganesapandian |
 | **Email** | sruthig@natyatheerth.com |
 | **Phone** | +1 902-441-8675 |
 | **Location** | Halifax, NS, Canada |
