@@ -79,6 +79,10 @@ jobs:
         working-directory: mobile-ionic
         run: npm run build
 
+      - name: Add Android platform
+        working-directory: mobile-ionic
+        run: npx cap add android
+
       - name: Sync Capacitor
         working-directory: mobile-ionic
         run: npx cap sync android
