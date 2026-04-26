@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "staging"
+    },
+    "location": {
+      "value": "canadaeast"
+    },
+    "appName": {
+      "value": "natyatheerth"
+    },
+    "postgresAdminUser": {
+      "value": "natyaadmin"
+    },
+    "postgresAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-staging-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-staging-kv"
+        },
+        "secretName": "postgres-admin-password"
+      }
+    },
+    "jwtSecret": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-staging-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-staging-kv"
+        },
+        "secretName": "jwt-secret"
+      }
+    },
+    "adminEmail": {
+      "value": "sruthig@natyatheerth.com"
+    }
+  }
+}
