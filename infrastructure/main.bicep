@@ -26,7 +26,7 @@ param postgresAdminPassword string
 param jwtSecret string
 
 @description('Admin email address')
-param adminEmail string = 'sruthig@natyatheerth.com'
+param adminEmail string = 'sruthi@natyatheerth.com'
 
 @description('Entra ID (Azure AD) principal name to set as PostgreSQL administrator (e.g. karthik@pringa.onmicrosoft.com)')
 param postgresEntraAdminUser string = 'karthik@pringa.onmicrosoft.com'

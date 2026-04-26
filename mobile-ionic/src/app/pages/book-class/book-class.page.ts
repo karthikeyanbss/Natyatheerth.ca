@@ -42,7 +42,7 @@ export class BookClassPage {
         this.submitting = false;
       },
       error: () => {
-        this.toastMessage = 'Registration failed. Please email sruthig@natyatheerth.com';
+        this.toastMessage = 'Registration failed. Please email sruthi@natyatheerth.com';
         this.toastColor = 'danger';
         this.showToast = true;
         this.submitting = false;

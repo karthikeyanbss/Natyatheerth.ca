@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
         this.submitting = false;
       },
       error: () => {
-        this.error = 'Registration failed. Please try again or email sruthig@natyatheerth.com';
+        this.error = 'Registration failed. Please try again or email sruthi@natyatheerth.com';
         this.submitting = false;
       }
     });
