@@ -7,14 +7,15 @@ interface LoginPayload {
   password: string;
 }
 
-const ADMIN_USERNAME = process.env['ADMIN_USERNAME'];
-const ADMIN_PASSWORD_HASH = process.env['ADMIN_PASSWORD_HASH'];
-
-if (!ADMIN_USERNAME || !ADMIN_PASSWORD_HASH) {
-  throw new Error('ADMIN_USERNAME and ADMIN_PASSWORD_HASH environment variables must be set');
-}
-
 async function login(req: HttpRequest, ctx: InvocationContext): Promise<HttpResponseInit> {
+  const ADMIN_USERNAME = process.env['ADMIN_USERNAME'];
+  const ADMIN_PASSWORD_HASH = process.env['ADMIN_PASSWORD_HASH'];
+
+  if (!ADMIN_USERNAME || !ADMIN_PASSWORD_HASH) {
+    ctx.error('ADMIN_USERNAME and ADMIN_PASSWORD_HASH environment variables must be set');
+    return { status: 500, jsonBody: { error: 'Server configuration error' } };
+  }
+
   try {
     const body = await req.json() as LoginPayload;
 
@@ -23,7 +24,7 @@ async function login(req: HttpRequest, ctx: InvocationContext): Promise<HttpResp
     }
 
     const isValidUser = body.username === ADMIN_USERNAME;
-    const isValidPass = bcrypt.compareSync(body.password, ADMIN_PASSWORD_HASH!);
+    const isValidPass = bcrypt.compareSync(body.password, ADMIN_PASSWORD_HASH);
 
     if (!isValidUser || !isValidPass) {
       return { status: 401, jsonBody: { error: 'Invalid credentials' } };
