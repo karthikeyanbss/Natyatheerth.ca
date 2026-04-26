@@ -40,11 +40,12 @@ var tags = {
 var storageAccountName = take(replace('${appName}${environment}stor', '-', ''), 24)
 
 // Static Web App (Angular frontend)
+// Note: Microsoft.Web/staticSites is not available in canadaeast; eastus2 is used instead.
 module staticWebApp 'modules/static-web-app.bicep' = {
   name: 'staticWebApp'
   params: {
     name: '${prefix}-web'
-    location: location
+    location: 'eastus2'
     tags: tags
   }
 }
