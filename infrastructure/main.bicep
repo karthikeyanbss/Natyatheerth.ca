@@ -95,3 +95,7 @@ module storage 'modules/storage.bicep' = {
 output staticWebAppUrl    string = staticWebApp.outputs.url
 output functionsUrl       string = functions.outputs.url
 output postgresHost       string = postgresql.outputs.fullyQualifiedDomainName
+
+@description('Azure Static Web Apps deployment token — add as GitHub secret AZURE_STATIC_WEB_APPS_API_TOKEN')
+@secure()
+output staticWebAppApiToken string = staticWebApp.outputs.apiKey

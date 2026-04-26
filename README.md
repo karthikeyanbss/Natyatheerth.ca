@@ -228,6 +228,82 @@ az deployment group create \
 | `POSTGRES_ADMIN_PASSWORD` | PostgreSQL admin password |
 | `JWT_SECRET` | JWT signing secret |
 
+### How to Obtain Each Secret
+
+#### `AZURE_STATIC_WEB_APPS_API_TOKEN`
+
+This is the deployment token for your Azure Static Web App. Obtain it **after** running the infrastructure deployment:
+
+**Option A — Azure CLI (recommended):**
+```bash
+az staticwebapp secrets list \
+  --name natyatheerth-prod-web \
+  --resource-group natya-theerth-prod-rg \
+  --query "properties.apiKey" \
+  --output tsv
+```
+
+**Option B — Bicep deployment output:**
+After `az deployment group create` completes, read the secure output:
+```bash
+az deployment group show \
+  --resource-group natya-theerth-prod-rg \
+  --name staticWebApp \
+  --query "properties.outputs.apiKey.value" \
+  --output tsv
+```
+
+**Option C — Azure Portal:**
+1. Open the Azure Portal → **Static Web Apps** → `natyatheerth-prod-web`
+2. In the left menu choose **Manage deployment token**
+3. Copy the token shown
+
+Once you have the token, add it as a GitHub secret:
+```bash
+gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN --body "<TOKEN>"
+```
+
+#### `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`
+
+Download the publish profile from the Azure Portal or CLI after the infrastructure is deployed:
+
+```bash
+az functionapp deployment list-publishing-profiles \
+  --name natyatheerth-prod-functions \
+  --resource-group natya-theerth-prod-rg \
+  --xml | gh secret set AZURE_FUNCTIONAPP_PUBLISH_PROFILE --body-file -
+```
+
+Or via the Portal: **Function App** → `natyatheerth-prod-functions` → **Get publish profile** → copy the XML content.
+
+#### `AZURE_CREDENTIALS`
+
+Create a service principal and capture the JSON output:
+
+```bash
+az ad sp create-for-rbac \
+  --name natyatheerth-github-actions \
+  --role contributor \
+  --scopes /subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg \
+  --sdk-auth | gh secret set AZURE_CREDENTIALS --body-file -
+```
+
+#### `AZURE_SUBSCRIPTION_ID`
+
+Fixed value — add it directly:
+```bash
+gh secret set AZURE_SUBSCRIPTION_ID --body "c7db7efa-b163-448a-8af0-23062dc21f5a"
+```
+
+#### `POSTGRES_ADMIN_PASSWORD` and `JWT_SECRET`
+
+These are the same values you stored in Key Vault during infrastructure setup (step 4 above). Add them as GitHub secrets so the CI pipeline can reference them:
+
+```bash
+gh secret set POSTGRES_ADMIN_PASSWORD --body "<YOUR_PASSWORD>"
+gh secret set JWT_SECRET              --body "<YOUR_SECRET>"
+```
+
 ---
 
 ## 📞 Contact
