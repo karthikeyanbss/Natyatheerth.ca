@@ -1,0 +1,29 @@
+<div style="min-height:100vh;background:var(--color-cream);padding-top:70px">
+  <div class="container" style="padding-top:3rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+      <h1 style="color:var(--color-primary)">Classes</h1>
+      <a routerLink="/admin/dashboard" class="btn btn-secondary">← Dashboard</a>
+    </div>
+    <div *ngIf="loading" class="loading"><div class="spinner"></div></div>
+    <div *ngIf="!loading">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Level</th><th>Day</th><th>Time</th><th>Mode</th><th>Capacity</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of classes">
+              <td><strong>{{ c.name }}</strong><br><span style="font-size:0.85rem;color:var(--color-text-light)">{{ c.description }}</span></td>
+              <td>{{ c.level }}</td>
+              <td>{{ c.dayOfWeek }}</td>
+              <td>{{ c.startTime }} – {{ c.endTime }}</td>
+              <td>{{ c.mode }}</td>
+              <td>{{ c.capacity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p *ngIf="classes.length===0" style="text-align:center;padding:3rem;color:var(--color-text-light)">No classes yet. Add classes via the API.</p>
+    </div>
+  </div>
+</div>

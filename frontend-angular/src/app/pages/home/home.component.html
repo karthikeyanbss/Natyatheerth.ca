@@ -1,0 +1,149 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="logo-circle logo-circle--lg" style="margin:0 auto 2rem">
+      <span class="initials" style="font-size:3rem">NT</span>
+    </div>
+    <p class="hero__tagline">Natya Theerth Kalai Koodam</p>
+    <h1 class="hero__title">BHARATANATYAM</h1>
+    <p class="hero__subtitle">NRUTHIYA SAAGARAM</p>
+    <p style="color:rgba(253,246,227,.7);margin-bottom:1rem;font-size:1.1rem;font-style:italic">
+      "Where every step tells a story – கலையின் தீர்த்தத்தில் நடனம்"
+    </p>
+    <p style="color:rgba(212,175,55,.8);margin-bottom:2.5rem;font-size:0.95rem">
+      (Dance in the sacred flow of art)
+    </p>
+    <div class="hero__actions">
+      <button class="btn btn-primary btn-lg" (click)="goToRegister()">Join Us</button>
+      <button class="btn btn-secondary btn-lg" (click)="goToContact()">Contact Us</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Guru Preview -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-heading">
+      <h2>About Our Guru</h2>
+      <div class="divider"></div>
+      <p class="subtitle">Under the guidance of Guru Sruthi Gopinath</p>
+    </div>
+    <div class="grid grid--2" style="align-items:center;gap:4rem">
+      <div>
+        <div class="logo-circle logo-circle--lg" style="margin:0 auto">
+          <span class="initials" style="font-size:2.5rem">SG</span>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--color-primary);margin-bottom:1rem">Sruthi Gopinath</h3>
+        <p style="margin-bottom:1rem;line-height:1.8">
+          Guru Sruthi Gopinath is a dedicated Bharatanatyam dancer and teacher with over two decades of 
+          immersion in this classical Indian art form. Trained under renowned masters, she brings the 
+          authentic Kalakshetra tradition to Halifax, NS.
+        </p>
+        <p style="margin-bottom:1.5rem;line-height:1.8;color:var(--color-text-light)">
+          Her teaching philosophy embraces both the rigorous classical technique and the spiritual 
+          essence of Bharatanatyam, nurturing students to discover their inner artist.
+        </p>
+        <a routerLink="/about-guru" class="btn btn-outline-primary">Read Full Biography</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Performance Video -->
+<section class="section bg-dark">
+  <div class="container">
+    <div class="section-heading">
+      <h2 style="color:var(--color-gold)">Watch a Performance</h2>
+      <div class="divider-gold"></div>
+      <p class="subtitle" style="color:rgba(253,246,227,.7)">Experience the beauty of Bharatanatyam</p>
+    </div>
+    <div style="max-width:800px;margin:0 auto">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/DQwt15WTak?si=g2ZkE3YaAQ3McyE6"
+          title="Natya Theerth Performance"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Classes Section -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Join Our Classes</h2>
+      <div class="divider"></div>
+      <p class="subtitle">Discover the right class for your journey</p>
+    </div>
+    <div class="grid grid--auto">
+      <div class="card">
+        <div class="card__header">
+          <h3>🧒 Children (5+)</h3>
+        </div>
+        <div class="card__body">
+          <p>Specially designed classes for children aged 5 and above. Develop rhythm, coordination, 
+          and a love for classical dance in a fun and nurturing environment.</p>
+        </div>
+        <div class="card__footer">
+          <a routerLink="/register" class="btn btn-primary btn-sm">Enroll Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <h3>👩 Women's Special Classes</h3>
+        </div>
+        <div class="card__body">
+          <p>Dedicated sessions for women of all ages. Whether you are a beginner or returning to dance,
+          these classes provide a welcoming space to explore Bharatanatyam.</p>
+        </div>
+        <div class="card__footer">
+          <a routerLink="/register" class="btn btn-primary btn-sm">Enroll Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <h3>🌐 Flexible Formats</h3>
+        </div>
+        <div class="card__body">
+          <ul style="padding-left:1.25rem;line-height:2">
+            <li>Group Classes</li>
+            <li>Private One-on-One Sessions</li>
+            <li>Online Classes (via Video Call)</li>
+            <li>Workshop & Performance Training</li>
+          </ul>
+        </div>
+        <div class="card__footer">
+          <a routerLink="/schedule" class="btn btn-primary btn-sm">View Schedule</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Info Strip -->
+<section class="section-sm" style="background:var(--color-primary)">
+  <div class="container text-center">
+    <div class="d-flex justify-center gap-4" style="flex-wrap:wrap;color:var(--color-cream)">
+      <div>
+        <strong style="color:var(--color-gold)">📧 Email</strong><br>
+        <a href="mailto:sruthig@natyatheerth.com" style="color:var(--color-cream)">sruthig&#64;natyatheerth.com</a>
+      </div>
+      <div>
+        <strong style="color:var(--color-gold)">📞 Phone</strong><br>
+        <a href="tel:+19024418675" style="color:var(--color-cream)">+1 902-441-8675</a>
+      </div>
+      <div>
+        <strong style="color:var(--color-gold)">📍 Location</strong><br>
+        <span>Halifax, NS, Canada</span>
+      </div>
+    </div>
+  </div>
+</section>

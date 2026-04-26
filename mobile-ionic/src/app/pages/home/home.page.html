@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title style="color:#D4AF37;font-family:'Playfair Display',serif">Natya Theerth</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#1A0A0A 0%,#8B1A1A 100%);padding:3rem 1.5rem;text-align:center;color:#FDF6E3">
+    <div style="width:100px;height:100px;border-radius:50%;border:3px solid #D4AF37;background:rgba(139,26,26,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:serif;color:#D4AF37;font-size:2rem;font-weight:700">NT</div>
+    <h1 style="font-size:2.5rem;font-family:'Playfair Display',serif;letter-spacing:0.2em;color:#FDF6E3;margin:0">BHARATANATYAM</h1>
+    <p style="color:#D4AF37;letter-spacing:0.3em;margin:0.5rem 0 1rem">NRUTHIYA SAAGARAM</p>
+    <p style="font-style:italic;color:rgba(253,246,227,.7);font-size:0.9rem;margin-bottom:2rem">"கலையின் தீர்த்தத்தில் நடனம்"</p>
+    <ion-button routerLink="/schedule" color="warning" expand="block" style="max-width:280px;margin:0 auto">
+      View Schedule
+    </ion-button>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h2 style="text-align:center;font-family:'Playfair Display',serif;color:#8B1A1A;padding:1.5rem 1rem 0.5rem">Our Classes</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header style="background:#8B1A1A">
+            <ion-card-title style="color:#FDF6E3">Children (5+)</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p style="margin-top:0.75rem">Fun, structured classes for young dancers. Saturday mornings.</p>
+            <ion-button routerLink="/book-class" fill="outline" color="danger" expand="block" style="margin-top:1rem">Register</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header style="background:#8B1A1A">
+            <ion-card-title style="color:#FDF6E3">Women's Group</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p style="margin-top:0.75rem">Wednesday evening classes for women of all levels.</p>
+            <ion-button routerLink="/book-class" fill="outline" color="danger" expand="block" style="margin-top:1rem">Register</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card style="background:#1A0A0A">
+          <ion-card-content style="text-align:center;padding:1.5rem">
+            <p style="color:#D4AF37;font-weight:700;margin-bottom:0.5rem">Contact Us</p>
+            <p style="color:rgba(253,246,227,.8);font-size:0.9rem">📧 sruthig&#64;natyatheerth.com</p>
+            <p style="color:rgba(253,246,227,.8);font-size:0.9rem">📞 +1 902-441-8675</p>
+            <p style="color:rgba(253,246,227,.8);font-size:0.9rem">📍 Halifax, NS</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

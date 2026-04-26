@@ -1,0 +1,35 @@
+<div style="min-height:100vh;background:var(--color-cream);padding-top:70px">
+  <div class="container" style="padding-top:3rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+      <h1 style="color:var(--color-primary)">Bookings</h1>
+      <a routerLink="/admin/dashboard" class="btn btn-secondary">← Dashboard</a>
+    </div>
+    <div *ngIf="loading" class="loading"><div class="spinner"></div></div>
+    <div *ngIf="!loading">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Student</th><th>Class</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let b of bookings">
+              <td>{{ b.student?.firstName }} {{ b.student?.lastName }}</td>
+              <td>{{ b.classItem?.name }}</td>
+              <td>
+                <span [class]="b.status==='confirmed'?'badge badge-green':b.status==='cancelled'?'badge':'badge badge-gold'">
+                  {{ b.status | titlecase }}
+                </span>
+              </td>
+              <td>{{ b.createdAt | date:'mediumDate' }}</td>
+              <td>
+                <button *ngIf="b.status==='pending'" class="btn btn-sm btn-primary" (click)="updateStatus(b.id!, 'confirmed')">Confirm</button>
+                <button *ngIf="b.status!=='cancelled'" class="btn btn-sm" style="background:#e53e3e;color:#fff;margin-left:0.5rem" (click)="updateStatus(b.id!, 'cancelled')">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p *ngIf="bookings.length===0" style="text-align:center;padding:3rem;color:var(--color-text-light)">No bookings yet.</p>
+    </div>
+  </div>
+</div>

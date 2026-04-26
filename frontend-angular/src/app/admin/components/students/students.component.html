@@ -1,0 +1,31 @@
+<div style="min-height:100vh;background:var(--color-cream);padding-top:70px">
+  <div class="container" style="padding-top:3rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+      <h1 style="color:var(--color-primary)">Students</h1>
+      <a routerLink="/admin/dashboard" class="btn btn-secondary">← Dashboard</a>
+    </div>
+    <div *ngIf="loading" class="loading"><div class="spinner"></div></div>
+    <div *ngIf="error" class="alert alert-error">{{ error }}</div>
+    <div *ngIf="!loading && !error">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Age</th><th>Email</th><th>Phone</th><th>Mode</th><th>Joined</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of students">
+              <td>{{ s.firstName }} {{ s.lastName }}</td>
+              <td>{{ s.age }}</td>
+              <td><a [href]="'mailto:'+s.email">{{ s.email }}</a></td>
+              <td>{{ s.phone }}</td>
+              <td><span [class]="s.mode==='online'?'badge badge-gold':'badge badge-green'">{{ s.mode }}</span></td>
+              <td>{{ s.createdAt | date:'mediumDate' }}</td>
+              <td><button class="btn btn-sm" style="background:#e53e3e;color:#fff" (click)="deleteStudent(s.id!)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p *ngIf="students.length===0" style="text-align:center;padding:3rem;color:var(--color-text-light)">No students yet.</p>
+    </div>
+  </div>
+</div>

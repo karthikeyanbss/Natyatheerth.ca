@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h1>Bharatanatyam Levels</h1>
+  <p>A structured path from first steps to solo performance</p>
+</div>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-heading">
+      <h2>The Learning Journey</h2>
+      <div class="divider"></div>
+      <p class="subtitle">Bharatanatyam is learned progressively. Each level builds on the last, deepening technique, expression, and understanding.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2rem">
+      <div *ngFor="let level of levels; let i = index"
+           style="background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);overflow:hidden">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:0">
+          <div [style.background]="level.color" style="padding:2rem;min-width:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+            <div style="font-size:2.5rem;font-weight:700;color:var(--color-primary)">0{{ i + 1 }}</div>
+            <h3 style="color:var(--color-primary);margin-bottom:0.25rem">{{ level.name }}</h3>
+            <p style="font-size:0.85rem;color:var(--color-text-light);font-style:italic">{{ level.tamil }}</p>
+          </div>
+          <div style="padding:2rem">
+            <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1rem">
+              <span class="badge badge-gold">{{ level.duration }}</span>
+              <span class="badge badge-primary">{{ level.ageGroup }}</span>
+            </div>
+            <p style="line-height:1.8;margin-bottom:1rem;color:var(--color-text)">{{ level.description }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+              <span *ngFor="let topic of level.topics"
+                    style="background:var(--color-cream);border:1px solid var(--color-border);padding:0.25rem 0.75rem;border-radius:100px;font-size:0.85rem;color:var(--color-text)">
+                {{ topic }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:4rem;padding:3rem;background:var(--color-primary);border-radius:var(--radius-lg)">
+      <h3 style="color:var(--color-gold);margin-bottom:1rem">Ready to Begin Your Journey?</h3>
+      <p style="color:var(--color-cream);margin-bottom:2rem">All levels welcome. We'll assess your current ability during an initial class.</p>
+      <a routerLink="/register" class="btn btn-primary btn-lg">Register Now</a>
+    </div>
+  </div>
+</section>

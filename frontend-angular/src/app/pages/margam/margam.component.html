@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>Margam</h1>
+  <p>The classical Bharatanatyam solo concert format</p>
+</div>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-heading">
+      <h2>The Classical Margam</h2>
+      <div class="divider"></div>
+      <p class="subtitle">
+        Margam (மார்கம்) literally means "path" or "way." In Bharatanatyam, it refers to the 
+        structured sequence of items that make up a full solo recital. The margam represents 
+        a journey — from awakening to full expression to devotional conclusion.
+      </p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:900px;margin:0 auto">
+      <div *ngFor="let item of items"
+           style="background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:2rem;display:grid;grid-template-columns:60px 1fr;gap:1.5rem;align-items:start">
+        <div style="background:var(--color-primary);color:var(--color-cream);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.3rem;font-weight:700;flex-shrink:0">
+          {{ item.order }}
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem">
+            <h3 style="color:var(--color-primary)">{{ item.name }}</h3>
+            <span style="color:var(--color-gold);font-style:italic;font-size:0.9rem">{{ item.tamil }}</span>
+          </div>
+          <div style="display:flex;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
+            <span class="badge badge-primary" style="font-size:0.75rem">{{ item.type }}</span>
+            <span class="badge badge-gold" style="font-size:0.75rem">{{ item.duration }}</span>
+          </div>
+          <p style="line-height:1.8;color:var(--color-text-light)">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem;text-align:center">
+      <div style="display:inline-block;padding:2rem 3rem;background:linear-gradient(135deg,var(--color-primary),var(--color-dark-mid));border-radius:var(--radius-lg);color:var(--color-cream)">
+        <h3 style="color:var(--color-gold);margin-bottom:0.75rem">Arangetram – The Debut Recital</h3>
+        <p style="line-height:1.8;max-width:500px">
+          When a student completes their training and presents the full margam publicly for the first time,
+          it is called the <strong style="color:var(--color-gold)">Arangetram</strong> (அரங்கேற்றம்) — 
+          "ascending the stage." This milestone is a deeply celebrated moment for the student, their family, 
+          and their guru.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
