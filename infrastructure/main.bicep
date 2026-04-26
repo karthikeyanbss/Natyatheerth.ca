@@ -26,7 +26,7 @@ param postgresAdminPassword string
 param jwtSecret string
 
 @description('Admin email address')
-param adminEmail string = 'sruthig@natyatheerth.com'
+param adminEmail string = 'sruthi@natyatheerth.com'
 
 var prefix = '${appName}-${environment}'
 var tags = {

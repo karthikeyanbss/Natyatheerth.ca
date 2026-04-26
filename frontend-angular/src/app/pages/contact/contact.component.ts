@@ -38,7 +38,7 @@ export class ContactComponent {
         this.submitting = false;
       },
       error: () => {
-        this.error = 'Something went wrong. Please email us directly at sruthig@natyatheerth.com';
+        this.error = 'Something went wrong. Please email us directly at sruthi@natyatheerth.com';
         this.submitting = false;
       }
     });

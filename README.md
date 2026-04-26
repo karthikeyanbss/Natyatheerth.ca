@@ -239,7 +239,7 @@ az deployment group create \
 | | |
 |-|-|
 | **Guru** | Sruthi Ganesapandian |
-| **Email** | sruthig@natyatheerth.com |
+| **Email** | sruthi@natyatheerth.com |
 | **Phone** | +1 902-441-8675 |
 | **Location** | Halifax, NS, Canada |
 | **Website** | https://natyatheerth.ca |

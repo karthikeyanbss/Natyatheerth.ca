@@ -41,7 +41,7 @@ async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<Ht
       }
     });
 
-    const adminEmail = process.env['ADMIN_EMAIL'] ?? 'sruthig@natyatheerth.com';
+    const adminEmail = process.env['ADMIN_EMAIL'] ?? 'sruthi@natyatheerth.com';
     const fromEmail  = process.env['EMAIL_FROM']  ?? 'noreply@natyatheerth.com';
 
     await transporter.sendMail({
@@ -79,7 +79,7 @@ async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<Ht
     return { status: 200, jsonBody: { message: 'Message sent successfully' } };
   } catch (err) {
     ctx.log('Contact send error:', err);
-    return { status: 500, jsonBody: { error: 'Failed to send message. Please email sruthig@natyatheerth.com directly.' } };
+    return { status: 500, jsonBody: { error: 'Failed to send message. Please email sruthi@natyatheerth.com directly.' } };
   }
 }
 
