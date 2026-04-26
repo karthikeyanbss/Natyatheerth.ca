@@ -32,6 +32,12 @@
     },
     "adminEmail": {
       "value": "sruthig@natyatheerth.com"
+    },
+    "apexDomain": {
+      "value": "natyatheerth.ca"
+    },
+    "wwwDomain": {
+      "value": "www.natyatheerth.ca"
     }
   }
 }

@@ -175,6 +175,59 @@ npm start
 | Azure Database for PostgreSQL Flexible Server | Database (v15, Burstable B1ms) |
 | Azure Storage Account | Function app storage + media |
 
+### Custom Domain Setup
+
+The Bicep template registers `natyatheerth.ca` (apex) and `www.natyatheerth.ca` with the Static Web App automatically. You must create the DNS records at your domain registrar **before** running the deployment so that Azure can validate ownership.
+
+#### Step 1 — Get the SWA default hostname
+
+After a first-time deploy (or from the Azure portal), note the auto-generated hostname:
+
+```bash
+az staticwebapp show \
+  --name natyatheerth-prod-web \
+  --resource-group natya-theerth-prod-rg \
+  --query "defaultHostname" -o tsv
+# e.g. proud-meadow-0123456.azurestaticapps.net
+```
+
+#### Step 2 — Get the apex-domain validation token
+
+```bash
+az staticwebapp hostname show \
+  --name natyatheerth-prod-web \
+  --resource-group natya-theerth-prod-rg \
+  --hostname natyatheerth.ca \
+  --query "validationToken" -o tsv
+```
+
+> If the resource does not exist yet, do a first deploy **without** custom domains (`--parameters apexDomain='' wwwDomain=''`), then retrieve the token and add the DNS records before re-deploying with domains.
+
+#### Step 3 — Add DNS records at your registrar
+
+| Type          | Name  | Value                                           | Purpose                                                                 |
+|---------------|-------|-------------------------------------------------|-------------------------------------------------------------------------|
+| TXT           | `@`   | `<validationToken from Step 2>`                 | Apex domain ownership proof                                             |
+| ALIAS / ANAME | `@`   | `<defaultHostname>` (from Step 1)               | Apex → SWA (use ALIAS/ANAME or Azure DNS alias; plain A record won't work) |
+| CNAME         | `www` | `<defaultHostname>` (from Step 1)               | www subdomain → SWA                                                     |
+
+#### Step 4 — Deploy with custom domains
+
+```bash
+az deployment group create \
+  --subscription c7db7efa-b163-448a-8af0-23062dc21f5a \
+  --resource-group natya-theerth-prod-rg \
+  --template-file infrastructure/main.bicep \
+  --parameters infrastructure/parameters.json \
+  --parameters apexDomain='natyatheerth.ca' wwwDomain='www.natyatheerth.ca'
+```
+
+To skip custom domain registration (e.g., for a `dev` environment), pass empty strings:
+
+```bash
+--parameters apexDomain='' wwwDomain=''
+```
+
 ### Deploy to Azure
 
 ```bash
