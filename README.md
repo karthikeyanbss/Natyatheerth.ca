@@ -196,17 +196,43 @@ az keyvault create \
 az keyvault secret set --vault-name natyatheerth-prod-kv --name postgres-admin-password --value "<YOUR_PASSWORD>"
 az keyvault secret set --vault-name natyatheerth-prod-kv --name jwt-secret --value "<YOUR_SECRET>"
 
-# 5. Look up the Entra ID object ID of the PostgreSQL admin user and update parameters.json
-ENTRA_OBJECT_ID=$(az ad user show --id karthik@pringa.onmicrosoft.com --query id -o tsv)
-# Set the value of "postgresEntraAdminObjectId" in infrastructure/parameters.json to $ENTRA_OBJECT_ID
+# 5. (Optional) Set up an Entra ID (Azure AD) admin for direct PostgreSQL access
+# If you want to connect to the database as an Entra ID user (e.g. for DBA tasks),
+# update "postgresEntraAdminUser" and "postgresEntraAdminObjectId" in parameters.prod.json:
+ENTRA_OBJECT_ID=$(az ad user show --id user@tenant.onmicrosoft.com --query id -o tsv)
+# Edit infrastructure/parameters.prod.json and set both values, then deploy.
+# NOTE: Entra ID users must connect using an Azure AD access token, NOT a regular password.
+# See the "Connecting to PostgreSQL as an Entra Admin" section below.
 
-# 6. Deploy infrastructure
+# 6. Deploy infrastructure (the application always connects as the native admin "natyaadmin")
 az deployment group create \
   --subscription c7db7efa-b163-448a-8af0-23062dc21f5a \
   --resource-group natya-theerth-prod-rg \
   --template-file infrastructure/main.bicep \
-  --parameters infrastructure/parameters.json
+  --parameters infrastructure/parameters.prod.json
 ```
+
+### Connecting to PostgreSQL as an Entra Admin
+
+If you have configured an Entra ID (Azure AD) admin for PostgreSQL, you **cannot** use your regular
+Azure AD password. Azure Database for PostgreSQL Flexible Server requires an access token for Entra
+authentication. Use the following to obtain a token and connect:
+
+```bash
+# Get a short-lived access token for PostgreSQL
+PGPASSWORD=$(az account get-access-token \
+  --resource-type oss-rdbms \
+  --query accessToken -o tsv)
+
+# Connect using the token as the password (FQDN format: your-server.postgres.database.azure.com)
+psql "host=natyatheerth-prod-psql.postgres.database.azure.com port=5432 dbname=natyatheerth \
+      user=user@tenant.onmicrosoft.com \
+      password=${PGPASSWORD} sslmode=require"
+```
+
+> **Important:** Using your regular Azure AD password for `psql` will result in:
+> `FATAL: password authentication failed for user "user@tenant.onmicrosoft.com"`
+> Always use the token obtained from `az account get-access-token` instead.
 
 > **Azure Portal:** https://portal.azure.com/#@pringa.onmicrosoft.com/resource/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/overview
 
