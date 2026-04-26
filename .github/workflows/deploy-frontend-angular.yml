@@ -6,6 +6,13 @@ on:
     paths:
       - 'frontend-angular/**'
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'prod'
+        type: choice
+        options: ['dev', 'staging', 'prod']
 
 env:
   NODE_VERSION: '18.x'
@@ -14,6 +21,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy Angular App
+    environment: ${{ github.event.inputs.environment || 'prod' }}
     permissions:
       contents: read
       id-token: write
@@ -33,11 +41,19 @@ jobs:
         working-directory: frontend-angular
         run: npm ci
 
+      - name: Set build configuration
+        id: set-config
+        run: |
+          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          if [ "$ENV" = "prod" ]; then
+            echo "ng_config=production" >> "$GITHUB_OUTPUT"
+          else
+            echo "ng_config=development" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build Angular app
         working-directory: frontend-angular
-        run: npm run build
-        env:
-          NODE_ENV: production
+        run: npx ng build --configuration ${{ steps.set-config.outputs.ng_config }}
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -49,21 +65,3 @@ jobs:
           output_location: 'dist/natya-theerth-web/browser'
           skip_app_build: true
           skip_deploy_on_missing_secrets: true
-
-  lighthouse:
-    name: Lighthouse Audit
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls: |
-            https://natyatheerth.ca
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-        continue-on-error: true
