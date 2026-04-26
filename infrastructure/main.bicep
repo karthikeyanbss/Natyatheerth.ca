@@ -28,6 +28,12 @@ param jwtSecret string
 @description('Admin email address')
 param adminEmail string = 'sruthig@natyatheerth.com'
 
+@description('Apex custom domain for the Static Web App (e.g. natyatheerth.ca). Leave empty to skip custom domain registration.')
+param apexDomain string = ''
+
+@description('www subdomain for the Static Web App (e.g. www.natyatheerth.ca). Leave empty to skip.')
+param wwwDomain string = ''
+
 var prefix = '${appName}-${environment}'
 var tags = {
   project: 'Natya Theerth Kalai Koodam'
@@ -44,9 +50,11 @@ var storageAccountName = take(replace('${appName}${environment}stor', '-', ''), 
 module staticWebApp 'modules/static-web-app.bicep' = {
   name: 'staticWebApp'
   params: {
-    name: '${prefix}-web'
-    location: 'eastus2'
-    tags: tags
+    name:       '${prefix}-web'
+    location:   'eastus2'
+    tags:       tags
+    apexDomain: apexDomain
+    wwwDomain:  wwwDomain
   }
 }
 
@@ -92,6 +100,7 @@ module storage 'modules/storage.bicep' = {
   }
 }
 
-output staticWebAppUrl    string = staticWebApp.outputs.url
-output functionsUrl       string = functions.outputs.url
-output postgresHost       string = postgresql.outputs.fullyQualifiedDomainName
+output staticWebAppUrl      string = staticWebApp.outputs.url
+output staticWebAppHostname string = staticWebApp.outputs.defaultHostname
+output functionsUrl         string = functions.outputs.url
+output postgresHost         string = postgresql.outputs.fullyQualifiedDomainName
