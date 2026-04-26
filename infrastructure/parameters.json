@@ -32,6 +32,12 @@
     },
     "adminEmail": {
       "value": "sruthig@natyatheerth.com"
+    },
+    "postgresEntraAdminUser": {
+      "value": "karthik@pringa.onmicrosoft.com"
+    },
+    "postgresEntraAdminObjectId": {
+      "value": ""
     }
   }
 }
