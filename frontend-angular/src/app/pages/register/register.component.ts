@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -79,6 +79,6 @@ export class RegisterComponent implements OnInit {
     return !!(ctrl?.hasError(error) && ctrl?.touched);
   }
 
-  get s1(): any { return this.step1Form.controls; }
-  get s2(): any { return this.step2Form.controls; }
+  get s1(): { [key: string]: AbstractControl } { return this.step1Form.controls; }
+  get s2(): { [key: string]: AbstractControl } { return this.step2Form.controls; }
 }

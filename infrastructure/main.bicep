@@ -83,7 +83,7 @@ module postgresql 'modules/postgresql.bicep' = {
 module storage 'modules/storage.bicep' = {
   name: 'storage'
   params: {
-    name: replace('${prefix}stor', '-', '')
+    name: storageAccountName
     location: location
     tags: tags
   }
