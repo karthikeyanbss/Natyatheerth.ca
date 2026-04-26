@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ionic-web-build
-          path: mobile-ionic/www/
+          path: mobile-ionic/www/browser/
           retention-days: 7
 
   build-android:
