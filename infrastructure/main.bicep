@@ -28,6 +28,18 @@ param jwtSecret string
 @description('Admin email address')
 param adminEmail string = 'sruthig@natyatheerth.com'
 
+@description('Object ID (principal ID) of the shared Entra ID administrator for PostgreSQL. Leave empty to skip AD admin creation.')
+param entraAdminObjectId string = ''
+
+@description('Tenant ID for Entra ID authentication on PostgreSQL. Required when entraAdminObjectId is provided.')
+param entraAdminTenantId string = ''
+
+@description('Display name of the shared Entra ID administrator principal.')
+param entraAdminName string = ''
+
+@description('Principal type of the Entra ID administrator: ServicePrincipal, User, or Group.')
+param entraAdminPrincipalType string = 'ServicePrincipal'
+
 var prefix = '${appName}-${environment}'
 var tags = {
   project: 'Natya Theerth Kalai Koodam'
@@ -79,6 +91,10 @@ module postgresql 'modules/postgresql.bicep' = {
     adminUser: postgresAdminUser
     adminPassword: postgresAdminPassword
     databaseName: 'natyatheerth'
+    entraAdminObjectId: entraAdminObjectId
+    entraAdminTenantId: entraAdminTenantId
+    entraAdminName: entraAdminName
+    entraAdminPrincipalType: entraAdminPrincipalType
   }
 }
 
