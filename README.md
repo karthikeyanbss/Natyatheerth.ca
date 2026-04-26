@@ -133,8 +133,9 @@ cd api-functions
 # 1. Install dependencies
 npm install
 
-# 2. Copy and fill local settings
-#    Edit local.settings.json with your PostgreSQL credentials
+# 2. Copy the example settings and fill in your local values
+cp local.settings.json.example local.settings.json
+#    Edit local.settings.json with your PostgreSQL credentials and other secrets
 
 # 3. Create the database and run migrations
 psql -U postgres -c "CREATE DATABASE natyatheerth;"
