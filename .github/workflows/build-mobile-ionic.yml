@@ -15,6 +15,8 @@ jobs:
   build-web:
     runs-on: ubuntu-latest
     name: Build Ionic Web Assets
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout
@@ -46,6 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Android APK
     needs: build-web
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout

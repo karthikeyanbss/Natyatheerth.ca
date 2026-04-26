@@ -9,6 +9,15 @@ interface ContactPayload {
   message: string;
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<HttpResponseInit> {
   try {
     const body = await req.json() as ContactPayload;
@@ -39,15 +48,15 @@ async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<Ht
       from: fromEmail,
       to:   adminEmail,
       replyTo: body.email,
-      subject: `[Natya Theerth] Contact: ${body.subject}`,
+      subject: `[Natya Theerth] Contact: ${escapeHtml(body.subject)}`,
       html: `
         <h2>New Contact Message – Natya Theerth</h2>
         <table>
-          <tr><td><strong>Name:</strong></td><td>${body.name}</td></tr>
-          <tr><td><strong>Email:</strong></td><td><a href="mailto:${body.email}">${body.email}</a></td></tr>
-          ${body.phone ? `<tr><td><strong>Phone:</strong></td><td>${body.phone}</td></tr>` : ''}
-          <tr><td><strong>Subject:</strong></td><td>${body.subject}</td></tr>
-          <tr><td><strong>Message:</strong></td><td>${body.message.replace(/\n/g, '<br>')}</td></tr>
+          <tr><td><strong>Name:</strong></td><td>${escapeHtml(body.name)}</td></tr>
+          <tr><td><strong>Email:</strong></td><td><a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></td></tr>
+          ${body.phone ? `<tr><td><strong>Phone:</strong></td><td>${escapeHtml(body.phone)}</td></tr>` : ''}
+          <tr><td><strong>Subject:</strong></td><td>${escapeHtml(body.subject)}</td></tr>
+          <tr><td><strong>Message:</strong></td><td>${escapeHtml(body.message).replace(/\n/g, '<br>')}</td></tr>
         </table>
       `
     });
@@ -58,7 +67,7 @@ async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<Ht
       to:   body.email,
       subject: 'Thank you for contacting Natya Theerth Kalai Koodam',
       html: `
-        <h2>Thank you, ${body.name}!</h2>
+        <h2>Thank you, ${escapeHtml(body.name)}!</h2>
         <p>We have received your message and will get back to you within 24–48 hours.</p>
         <p>If your enquiry is urgent, please call us at <strong>+1 902-441-8675</strong>.</p>
         <br>

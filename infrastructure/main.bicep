@@ -35,6 +35,10 @@ var tags = {
   managedBy: 'Bicep'
 }
 
+// Storage account names: max 24 chars, lowercase letters and numbers only
+// e.g. 'natyatheerth' (12) + 'prod' (4) + 'stor' (4) = 20 chars — safe
+var storageAccountName = take(replace('${appName}${environment}stor', '-', ''), 24)
+
 // Static Web App (Angular frontend)
 module staticWebApp 'modules/static-web-app.bicep' = {
   name: 'staticWebApp'
@@ -52,7 +56,7 @@ module functions 'modules/functions.bicep' = {
     name: '${prefix}-functions'
     location: location
     tags: tags
-    storageAccountName: replace('${prefix}stor', '-', '')
+    storageAccountName: storageAccountName
     postgresHost: postgresql.outputs.fullyQualifiedDomainName
     postgresDb: 'natyatheerth'
     postgresUser: postgresAdminUser

@@ -14,6 +14,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy Angular App
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout
@@ -50,6 +53,8 @@ jobs:
     name: Lighthouse Audit
     needs: build-and-deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4

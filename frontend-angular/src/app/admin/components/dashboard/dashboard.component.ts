@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { ApiService } from '../../../services/api.service';
 
@@ -16,9 +17,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     Promise.all([
-      this.api.getStudents().toPromise(),
-      this.api.getClasses().toPromise(),
-      this.api.getBookings().toPromise()
+      firstValueFrom(this.api.getStudents()),
+      firstValueFrom(this.api.getClasses()),
+      firstValueFrom(this.api.getBookings())
     ]).then(([students, classes, bookings]) => {
       this.stats.students = students?.length ?? 0;
       this.stats.classes  = classes?.length ?? 0;

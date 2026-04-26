@@ -14,6 +14,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     name: Validate Bicep
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -38,6 +41,9 @@ jobs:
     name: Deploy Infrastructure
     needs: validate
     environment: ${{ github.event.inputs.environment }}
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
