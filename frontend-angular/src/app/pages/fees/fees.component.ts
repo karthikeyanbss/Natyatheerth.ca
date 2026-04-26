@@ -10,6 +10,7 @@ interface FeeItem {
 
 @Component({
   selector: 'app-fees',
+  standalone: false,
   templateUrl: './fees.component.html',
   styleUrls: ['./fees.component.scss']
 })

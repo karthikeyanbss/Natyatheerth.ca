@@ -12,6 +12,7 @@ interface Level {
 
 @Component({
   selector: 'app-bharatanatyam-levels',
+  standalone: false,
   templateUrl: './bharatanatyam-levels.component.html',
   styleUrls: ['./bharatanatyam-levels.component.scss']
 })
