@@ -247,20 +247,20 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-mid) 60%, var(--color-primary) 100%);
+  background: url('assets/hero-bg.jpg') center/cover no-repeat;
+  background-color: var(--color-dark);
   padding-top: 70px;
 
   &__overlay {
     position: absolute;
     inset: 0;
-    background: url('assets/hero-pattern.svg') center/cover;
-    opacity: 0.05;
+    background: linear-gradient(135deg, rgba(26,10,10,0.55) 0%, rgba(61,21,21,0.4) 60%, rgba(139,26,26,0.35) 100%);
   }
 
   &__content {
     position: relative;
     z-index: 1;
-    color: var(--color-cream);
+    color: #ffffff;
     padding: 4rem 1.5rem;
   }
 
@@ -268,14 +268,14 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--color-gold);
+    color: #ffffff;
     margin-bottom: 1rem;
     font-family: var(--font-body);
   }
 
   &__title {
     font-size: clamp(3rem, 8vw, 7rem);
-    color: var(--color-cream);
+    color: #ffffff;
     letter-spacing: 0.15em;
     margin-bottom: 0.5rem;
     text-shadow: 0 0 40px rgba(212,175,55,.3);
