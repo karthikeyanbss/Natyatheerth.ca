@@ -71,7 +71,7 @@ async function sendContact(req: HttpRequest, ctx: InvocationContext): Promise<Ht
         <p>We have received your message and will get back to you within 24–48 hours.</p>
         <p>If your enquiry is urgent, please call us at <strong>+1 902-441-8675</strong>.</p>
         <br>
-        <p>Warm regards,<br><strong>Guru Sruthi Gopinath</strong><br>Natya Theerth Kalai Koodam</p>
+        <p>Warm regards,<br><strong>Guru Sruthi Ganesapandian</strong><br>Natya Theerth Kalai Koodam</p>
       `
     });
 
