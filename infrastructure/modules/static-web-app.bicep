@@ -20,5 +20,4 @@ resource swa 'Microsoft.Web/staticSites@2023-01-01' = {
   }
 }
 
-output url            string = 'https://${swa.properties.defaultHostname}'
-output deploymentToken string = swa.listSecrets().properties.apiKey
+output url string = 'https://${swa.properties.defaultHostname}'
