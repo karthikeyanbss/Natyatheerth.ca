@@ -4,6 +4,7 @@ import { ClassItem } from '../../../models';
 
 @Component({
   selector: 'app-admin-classes',
+  standalone: false,
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.scss']
 })

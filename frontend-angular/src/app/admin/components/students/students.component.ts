@@ -4,6 +4,7 @@ import { Student } from '../../../models';
 
 @Component({
   selector: 'app-admin-students',
+  standalone: false,
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.scss']
 })

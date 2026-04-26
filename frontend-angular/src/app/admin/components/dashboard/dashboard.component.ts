@@ -6,6 +6,7 @@ import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-admin-dashboard',
+  standalone: false,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

@@ -4,6 +4,7 @@ import { Booking } from '../../../models';
 
 @Component({
   selector: 'app-admin-bookings',
+  standalone: false,
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.scss']
 })

@@ -8,6 +8,7 @@ interface Value {
 
 @Component({
   selector: 'app-vision',
+  standalone: false,
   templateUrl: './vision.component.html',
   styleUrls: ['./vision.component.scss']
 })
