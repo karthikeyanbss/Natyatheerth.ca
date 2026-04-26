@@ -55,13 +55,38 @@ jobs:
         working-directory: frontend-angular
         run: npx ng build --configuration ${{ steps.set-config.outputs.ng_config }}
 
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set SWA name and resource group
+        id: set-app-name
+        run: |
+          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          echo "swa_name=natyatheerth-${ENV}-web" >> "$GITHUB_OUTPUT"
+          echo "rg_name=natya-theerth-${ENV}-rg" >> "$GITHUB_OUTPUT"
+
+      - name: Check if Azure Static Web App exists and fetch deployment token
+        id: check-swa
+        run: |
+          SWA_NAME="${{ steps.set-app-name.outputs.swa_name }}"
+          RG_NAME="${{ steps.set-app-name.outputs.rg_name }}"
+          if az staticwebapp show --name "$SWA_NAME" --resource-group "$RG_NAME" --query id --output tsv 2>/dev/null; then
+            echo "swa_exists=true" >> "$GITHUB_OUTPUT"
+            TOKEN=$(az staticwebapp secrets list --name "$SWA_NAME" --resource-group "$RG_NAME" --query "properties.apiKey" -o tsv)
+            echo "::add-mask::$TOKEN"
+            echo "SWA_DEPLOYMENT_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          else
+            echo "swa_exists=false" >> "$GITHUB_OUTPUT"
+            echo "Azure Static Web App '$SWA_NAME' not found in resource group '$RG_NAME'. Skipping deployment."
+          fi
+
       - name: Deploy to Azure Static Web Apps
-        if: env.AZURE_STATIC_WEB_APPS_API_TOKEN != ''
-        env:
-          AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        if: steps.check-swa.outputs.swa_exists == 'true'
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          azure_static_web_apps_api_token: ${{ env.SWA_DEPLOYMENT_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
           app_location: 'frontend-angular'
