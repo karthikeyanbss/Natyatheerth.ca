@@ -27,6 +27,13 @@ let initialized = false;
 export async function getDataSource(): Promise<DataSource> {
   if (!initialized) {
     await AppDataSource.initialize();
+    try {
+      await AppDataSource.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+    } catch (err) {
+      // The uuid-ossp extension may already exist or the user may lack SUPERUSER privileges.
+      // In production, ensure the extension is created by a superuser before running migrations.
+      console.warn('Could not create uuid-ossp extension:', err);
+    }
     initialized = true;
   }
   return AppDataSource;
