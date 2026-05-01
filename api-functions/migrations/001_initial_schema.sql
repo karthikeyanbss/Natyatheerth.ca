@@ -1,10 +1,9 @@
 -- Natya Theerth Kalai Koodam – Initial Schema
 -- Run this against your PostgreSQL database
-
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- Note: gen_random_uuid() is built-in from PostgreSQL 13+ (no extension needed)
 
 CREATE TABLE IF NOT EXISTS students (
-  id          UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   first_name  VARCHAR(100) NOT NULL,
   last_name   VARCHAR(100) NOT NULL,
   age         INTEGER NOT NULL,
@@ -17,7 +16,7 @@ CREATE TABLE IF NOT EXISTS students (
 );
 
 CREATE TABLE IF NOT EXISTS classes (
-  id          UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name        VARCHAR(200) NOT NULL,
   description TEXT,
   level       VARCHAR(100) NOT NULL,
@@ -31,7 +30,7 @@ CREATE TABLE IF NOT EXISTS classes (
 );
 
 CREATE TABLE IF NOT EXISTS bookings (
-  id         UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id         UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
   class_id   UUID NOT NULL REFERENCES classes(id)  ON DELETE CASCADE,
   status     VARCHAR(20) DEFAULT 'pending',
@@ -42,7 +41,7 @@ CREATE TABLE IF NOT EXISTS bookings (
 );
 
 CREATE TABLE IF NOT EXISTS payments (
-  id           UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id           UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   booking_id   UUID NOT NULL REFERENCES bookings(id) ON DELETE CASCADE,
   amount       DECIMAL(10,2) NOT NULL,
   currency     VARCHAR(3) DEFAULT 'CAD',
