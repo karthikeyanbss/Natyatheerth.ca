@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
   synchronize: process.env['NODE_ENV'] !== 'production',
   logging:     process.env['NODE_ENV'] !== 'production',
   entities:    [Student, Class, Booking, Payment],
-  migrations:  ['src/migrations/*.ts'],
+  migrations:  ['dist/migrations/*.js'],
   ssl: process.env['POSTGRES_SSL'] === 'true' ? { rejectUnauthorized: false } : false
 });
 

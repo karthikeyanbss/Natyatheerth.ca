@@ -77,3 +77,10 @@ jobs:
           package:     ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: false
           enable-oryx-build: false
+          respect-funcignore: true
+
+      - name: Warn if Azure Function App does not exist
+        if: steps.check-app.outputs.app_exists == 'false'
+        run: |
+          echo "::warning::Azure Function App '${{ steps.set-app-name.outputs.app_name }}' was not found. Deploy the infrastructure first using the 'deploy-infrastructure.yml' workflow, then re-run this deployment."
+          exit 1
