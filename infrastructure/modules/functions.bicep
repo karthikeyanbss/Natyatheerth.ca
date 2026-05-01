@@ -6,18 +6,18 @@ param postgresHost       string='natyatheerth-dev-psql.postgres.database.azure.c
 param postgresDb         string='natyatheerth'
 param postgresUser       string='natyaadmin'
 @secure()
-param postgresPassword   string='Sruthi@123'
+param postgresPassword   string=''
 @secure()
-param jwtSecret          string='Rishi@123'
+param jwtSecret          string=''
 param adminEmail         string='Sruthi@natyatheerth.com'
 param adminUsername      string='Sruthi Ganespandian'
 @secure()
-param adminPasswordHash  string='Sruthi@123'
+param adminPasswordHash  string=''
 param smtpHost           string = 'mail.spacemail.com'
 param smtpPort           string = '587'
 param smtpUser           string = 'Sruthi@natyatheerth.com'
 @secure()
-param smtpPass           string = 'Sruthi@123'
+param smtpPass           string = ''
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name:     storageAccountName
