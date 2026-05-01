@@ -15,14 +15,7 @@ natyatheerth.com/
 ├── mobile-ionic/            # Ionic + Angular mobile app (Android/iOS)
 ├── api-functions/           # Azure Functions (TypeScript) REST API
 ├── infrastructure/          # Bicep templates for Azure deployment
-├── .github/workflows/       # CI/CD pipelines
-└── README.md
-```
-
----
-
 ## 🌐 Frontend — Angular 17
-
 Full-featured Angular 17 web app with standalone components, lazy-loaded modules, and reactive forms.
 
 ### Pages
