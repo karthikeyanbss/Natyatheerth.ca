@@ -33,6 +33,23 @@
     "adminEmail": {
       "value": "sruthi@natyatheerth.com"
     },
+    "smtpHost": {
+      "value": "smtp.zoho.com"
+    },
+    "smtpPort": {
+      "value": "587"
+    },
+    "smtpUser": {
+      "value": "sruthi@natyatheerth.com"
+    },
+    "smtpPass": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-prod-kv"
+        },
+        "secretName": "smtp-pass"
+      }
+    },
     "postgresEntraAdminUser": {
       "value": "karthik@pringa.onmicrosoft.com"
     },

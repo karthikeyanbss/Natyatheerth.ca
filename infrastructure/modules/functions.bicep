@@ -10,6 +10,11 @@ param postgresPassword   string
 @secure()
 param jwtSecret          string
 param adminEmail         string
+param smtpHost           string
+param smtpPort           string = '587'
+param smtpUser           string
+@secure()
+param smtpPass           string
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name:     storageAccountName
@@ -49,6 +54,10 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
         { name: 'JWT_SECRET',        value: jwtSecret }
         { name: 'ADMIN_EMAIL',       value: adminEmail }
         { name: 'EMAIL_FROM',        value: adminEmail }
+        { name: 'SMTP_HOST',         value: smtpHost }
+        { name: 'SMTP_PORT',         value: smtpPort }
+        { name: 'SMTP_USER',         value: smtpUser }
+        { name: 'SMTP_PASS',         value: smtpPass }
       ]
       cors: {
         allowedOrigins: [

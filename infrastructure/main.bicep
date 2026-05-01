@@ -28,6 +28,19 @@ param jwtSecret string
 @description('Admin email address')
 param adminEmail string = 'sruthi@natyatheerth.com'
 
+@description('SMTP server hostname for outbound email')
+param smtpHost string = 'smtp.zoho.com'
+
+@description('SMTP server port')
+param smtpPort string = '587'
+
+@description('SMTP username (usually the sending email address)')
+param smtpUser string = 'sruthi@natyatheerth.com'
+
+@secure()
+@description('SMTP password / app password for authenticating with the mail server')
+param smtpPass string
+
 @description('Entra ID (Azure AD) principal name to set as PostgreSQL administrator (e.g. karthik@pringa.onmicrosoft.com)')
 param postgresEntraAdminUser string = 'karthik@pringa.onmicrosoft.com'
 
@@ -70,6 +83,10 @@ module functions 'modules/functions.bicep' = {
     postgresPassword: postgresAdminPassword
     jwtSecret: jwtSecret
     adminEmail: adminEmail
+    smtpHost: smtpHost
+    smtpPort: smtpPort
+    smtpUser: smtpUser
+    smtpPass: smtpPass
   }
 }
 
