@@ -68,5 +68,18 @@ resource firewallAzure 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@
   }
 }
 
+// Allowlist PostgreSQL extensions required by the application schema.
+// Azure Database for PostgreSQL Flexible Server requires extensions to be listed
+// in the 'azure.extensions' server parameter before CREATE EXTENSION can succeed.
+// The migration (migrations/001_initial_schema.sql) uses uuid-ossp for UUID primary keys.
+resource extensionConfig 'Microsoft.DBforPostgreSQL/flexibleServers/configurations@2023-06-01-preview' = {
+  parent: postgres
+  name: 'azure.extensions'
+  properties: {
+    value: 'uuid-ossp'
+    source: 'user-override'
+  }
+}
+
 output fullyQualifiedDomainName string = postgres.properties.fullyQualifiedDomainName
 output serverId                  string = postgres.id
