@@ -6,7 +6,7 @@ param postgresHost       string='natyatheerth-dev-psql.postgres.database.azure.c
 param postgresDb         string='natyatheerth'
 param postgresUser       string='natyaadmin'
 @secure()
-param postgresPassword   string='Sruthi@123'
+param postgresPassword   string
 @secure()
 param jwtSecret          string=''
 param adminEmail         string='Sruthi@natyatheerth.com'
