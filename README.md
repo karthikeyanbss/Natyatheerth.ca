@@ -143,7 +143,7 @@ psql -U postgres -d natyatheerth -f migrations/001_initial_schema.sql
 
 # 4. Start the Functions host
 npm start
-# API available at http://localhost:7071/api
+# API available at https://natyatheerth-dev-functions.azurewebsites.net/api
 ```
 
 ### Environment Variables
