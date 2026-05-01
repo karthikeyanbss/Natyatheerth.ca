@@ -32,6 +32,14 @@
     },
     "adminEmail": {
       "value": "sruthi@natyatheerth.com"
+    },
+    "adminPasswordHash": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-staging-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-staging-kv"
+        },
+        "secretName": "admin-password-hash"
+      }
     }
   }
 }

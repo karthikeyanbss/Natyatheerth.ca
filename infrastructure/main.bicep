@@ -28,6 +28,26 @@ param jwtSecret string
 @description('Admin email address')
 param adminEmail string = 'sruthi@natyatheerth.com'
 
+@description('Admin username for the API login')
+param adminUsername string = 'admin'
+
+@secure()
+@description('Bcrypt hash of the admin password for API login')
+param adminPasswordHash string
+
+@description('SMTP host for sending emails')
+param smtpHost string = ''
+
+@description('SMTP port for sending emails')
+param smtpPort string = '587'
+
+@description('SMTP username for sending emails')
+param smtpUser string = ''
+
+@secure()
+@description('SMTP password for sending emails')
+param smtpPass string = ''
+
 @description('Entra ID (Azure AD) principal name to set as PostgreSQL administrator (e.g. karthik@pringa.onmicrosoft.com)')
 param postgresEntraAdminUser string = 'karthik@pringa.onmicrosoft.com'
 
@@ -70,6 +90,12 @@ module functions 'modules/functions.bicep' = {
     postgresPassword: postgresAdminPassword
     jwtSecret: jwtSecret
     adminEmail: adminEmail
+    adminUsername: adminUsername
+    adminPasswordHash: adminPasswordHash
+    smtpHost: smtpHost
+    smtpPort: smtpPort
+    smtpUser: smtpUser
+    smtpPass: smtpPass
   }
 }
 
