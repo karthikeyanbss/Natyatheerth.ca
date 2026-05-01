@@ -1,10 +1,4 @@
-import { Component } from '@angular/core';
-
-interface Value {
-  icon: string;
-  title: string;
-  description: string;
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-vision',
@@ -12,12 +6,49 @@ interface Value {
   templateUrl: './vision.component.html',
   styleUrls: ['./vision.component.scss']
 })
-export class VisionComponent {
-  values: Value[] = [
-    { icon: '🙏', title: 'Devotion (Bhakti)', description: 'Bharatanatyam is a form of worship. We approach each class and performance with reverence for the art and its lineage.' },
-    { icon: '📚', title: 'Rigorous Learning', description: 'We follow the classical curriculum — from foundational adavus to full margam — ensuring students build a deep and lasting technical foundation.' },
-    { icon: '💃', title: 'Expressive Freedom', description: 'Within the structure of tradition, we celebrate each student\'s unique expressive voice, developing their abhinaya and artistic individuality.' },
-    { icon: '🤝', title: 'Inclusive Community', description: 'Our studio welcomes students of all backgrounds, ages, and abilities. We believe dance belongs to everyone who seeks it with sincerity.' },
-    { icon: '🏆', title: 'Excellence', description: 'We set high standards for ourselves and our students — not to compete, but to honour the art form and the gurus who preserved it for us.' }
+export class VisionComponent implements OnInit, OnDestroy {
+  galleryImages: string[] = [
+    'assets/Gallery/gallery image 1.JPG',
+    'assets/Gallery/gallery image 2.JPG',
+    'assets/Gallery/gallery image 3.JPG',
+    'assets/Gallery/gallery image 4.JPG',
+    'assets/Gallery/gallery image 5.jpg',
+    'assets/Gallery/gallery image 6.jpg',
+    'assets/Gallery/gallery image 7.jpg',
+    'assets/Gallery/gallery image 8.JPG',
+    'assets/Gallery/gallery image 9.JPG',
+    'assets/Gallery/gallery image 10JPG.JPG'
   ];
+
+  currentSlide = 0;
+  private autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+  ngOnInit(): void {
+    this.startAutoplay();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoplay();
+  }
+
+  private startAutoplay(): void {
+    this.autoplayTimer = setInterval(() => this.nextSlide(), 3500);
+  }
+
+  private stopAutoplay(): void {
+    if (this.autoplayTimer) {
+      clearInterval(this.autoplayTimer);
+      this.autoplayTimer = null;
+    }
+  }
+
+  prevSlide(): void {
+    this.stopAutoplay();
+    this.currentSlide = (this.currentSlide - 1 + this.galleryImages.length) % this.galleryImages.length;
+    this.startAutoplay();
+  }
+
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.galleryImages.length;
+  }
 }

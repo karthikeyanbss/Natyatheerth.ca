@@ -67,6 +67,7 @@ export class RegisterComponent implements OnInit {
       next: () => {
         this.success = true;
         this.submitting = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       },
       error: () => {
         this.error = 'Registration failed. Please try again or email sruthi@natyatheerth.com';

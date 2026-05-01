@@ -1,71 +1,47 @@
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero__overlay"></div>
-  <div class="hero__content">
-    
-    
-    <h1 class="hero__title">BHARATANATYAM</h1>
-    <p class="hero__subtitle">Natya Theerth Kalai Koodam</p>
-    <p style="color:rgba(253,246,227,.7);margin-bottom:1rem;font-size:1.1rem;font-style:italic">
-      Where every step tells a story – கலையின் தீர்த்தத்தில் நடனம்
-    </p>
-    <p style="color:rgba(212,175,55,.8);margin-bottom:2.5rem;font-size:0.95rem">
-      (Dance in the sacred flow of art)
-    </p>
-    <div class="hero__actions">
-      <button class="btn btn-primary btn-lg" (click)="goToRegister()">Join Us</button>
-      <button class="btn btn-secondary btn-lg" (click)="goToContact()">Contact Us</button>
+<section class="home-hero">
+  <div class="home-hero__veil"></div>
+  <div class="home-hero__grain"></div>
+  <div class="container home-hero__layout">
+    <div class="home-hero__copy">
+      <p class="home-hero__kicker">Bharatanatyam</p>
+      <h1>Natya Theerth Kalai Koodam</h1>
+      <p class="home-hero__line">Where every step tells a story</p>
+
+      <div class="home-hero__actions">
+        <button class="btn btn-primary btn-lg" (click)="goToRegister()">Join Us</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="spotlight">
+  <div class="container spotlight__grid">
+    <div class="spotlight__image-wrap">
+      <img src="assets/Gallery/guru-solo-performance.jpg" alt="Guru Sruthi Ganesapandian solo performance">
+    </div>
+    <div class="spotlight__content">
+      <p class="spotlight__eyebrow">Meet Our Guru</p>
+      <h2>Sruthi Ganesapandian</h2>
+      <p>
+        Shivakalamani. Ms. Sruthi Ganesapandian has been immersed in the sacred art of Bharatanatyam since the age of five. She learnt Bharatanatyam under the guidance of her esteemed Gurus, Smt. Abhirami, Shri S. Shivakumar, Smt. Sailaja Shivakumar, and Shri K. P. Karvarnan. Rooted in a strong traditional foundation, her journey in Bharatanatyam has been both an artistic pursuit and a path of deep spiritual growth. The title “Shivakalamani” was conferred upon Ms. Sruthi Ganesapandian in 2015 by her Guru, Shri S. Shivakumar, in recognition of her successful completion of a Diploma in Bharatanatyam.
+      </p>
+      <a routerLink="/about-guru" class="btn btn-outline-primary">Read Full Biography</a>
     </div>
   </div>
 </section>
 
-<!-- About Guru Preview -->
-<section class="section bg-cream">
+<section class="home-youtube" style="background:var(--color-dark);padding:5rem 0;text-align:center">
   <div class="container">
-    <div class="section-heading">
-      <h2>About Our Guru</h2>
-      <div class="divider"></div>
-      <p class="subtitle">Under the guidance of Guru Sruthi Ganesapandian</p>
-    </div>
-    <div class="grid grid--2" style="align-items:center;gap:4rem">
-      <div>
-        <div class="logo-circle logo-circle--lg" style="margin:0 auto">
-          <span class="initials" style="font-size:2.5rem">SG</span>
-        </div>
-      </div>
-      <div>
-        <h3 style="color:var(--color-primary);margin-bottom:1rem">Sruthi Ganesapandian</h3>
-        <p style="margin-bottom:1rem;line-height:1.8">
-          Guru Sruthi Ganesapandian is a dedicated Bharatanatyam dancer and teacher with over two decades of 
-          immersion in this classical Indian art form. Trained under renowned masters, she brings the 
-          authentic Kalakshetra tradition to Halifax, NS.
-        </p>
-        <p style="margin-bottom:1.5rem;line-height:1.8;color:var(--color-text-light)">
-          Her teaching philosophy embraces both the rigorous classical technique and the spiritual 
-          essence of Bharatanatyam, nurturing students to discover their inner artist.
-        </p>
-        <a routerLink="/about-guru" class="btn btn-outline-primary">Read Full Biography</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Performance Video -->
-<section class="section bg-dark">
-  <div class="container">
-    <div class="section-heading">
-      <h2 style="color:var(--color-gold)">Watch a Performance</h2>
-      <div class="divider-gold"></div>
-      <p class="subtitle" style="color:rgba(253,246,227,.7)">Experience the beauty of Bharatanatyam</p>
-    </div>
-    <div style="max-width:800px;margin:0 auto">
-      <div class="video-wrapper">
+    <p style="color:var(--color-gold);font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem">Watch a Performance</p>
+    <h2 style="color:var(--color-cream);margin-bottom:0.5rem">Experience the Beauty of Bharatanatyam</h2>
+    <div style="width:3rem;height:2px;background:var(--color-gold);margin:0 auto 2.5rem"></div>
+    <div style="position:relative;max-width:760px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+      <div style="position:relative;padding-bottom:56.25%;height:0">
         <iframe
-          width="560"
-          height="315"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
           src="https://www.youtube.com/embed/DQwt15W_Tak?si=vIZLIhYwaLTU9oxw"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen>
@@ -75,77 +51,35 @@
   </div>
 </section>
 
-<!-- Classes Section -->
-<section class="section bg-cream">
+<section class="stage-gallery">
   <div class="container">
-    <div class="section-heading">
-      <h2>Join Our Classes</h2>
-      <div class="divider"></div>
-      <p class="subtitle">Discover the right class for your journey</p>
+    <div class="stage-gallery__heading">
+      <p>Performance Moments</p>
+      <h2>Life On Stage</h2>
     </div>
-    <div class="grid grid--auto">
-      <div class="card">
-        <div class="card__header">
-          <h3>🧒 Children (5+)</h3>
-        </div>
-        <div class="card__body">
-          <p>Specially designed classes for children aged 5 and above. Develop rhythm, coordination, 
-          and a love for classical dance in a fun and nurturing environment.</p>
-        </div>
-        <div class="card__footer">
-          <a routerLink="/register" class="btn btn-primary btn-sm">Enroll Now</a>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card__header">
-          <h3>👩 Women's Special Classes</h3>
-        </div>
-        <div class="card__body">
-          <p>Dedicated sessions for women of all ages. Whether you are a beginner or returning to dance,
-          these classes provide a welcoming space to explore Bharatanatyam.</p>
-        </div>
-        <div class="card__footer">
-          <a routerLink="/register" class="btn btn-primary btn-sm">Enroll Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card__header">
-          <h3>🌐 Flexible Formats</h3>
-        </div>
-        <div class="card__body">
-          <ul style="padding-left:1.25rem;line-height:2">
-            <li>Group Classes</li>
-            <li>Private One-on-One Sessions</li>
-            <li>Online Classes (via Video Call)</li>
-            <li>Workshop & Performance Training</li>
-          </ul>
-        </div>
-        <div class="card__footer">
-          <a routerLink="/schedule" class="btn btn-primary btn-sm">View Schedule</a>
-        </div>
-      </div>
+    <div class="stage-gallery__grid">
+      <article class="stage-gallery__tile" *ngFor="let image of stageImages; let i = index">
+        <img [src]="image" [alt]="'Bharatanatyam performance image ' + (i + 1)">
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Contact Info Strip -->
-<section class="section-sm" style="background:var(--color-primary)">
-  <div class="container text-center">
-    <div class="d-flex justify-center gap-4" style="flex-wrap:wrap;color:var(--color-cream)">
-      <div>
-        <strong style="color:var(--color-gold)">📧 Email</strong><br>
-        <a href="mailto:sruthi@natyatheerth.com" style="color:var(--color-cream)">sruthi&#64;natyatheerth.com</a>
-      </div>
-      <div>
-        <strong style="color:var(--color-gold)">📞 Phone</strong><br>
-        <a href="tel:+19024418675" style="color:var(--color-cream)">+1 902-441-8675</a>
-      </div>
-      <div>
-        <strong style="color:var(--color-gold)">📍 Location</strong><br>
-        <span>Halifax, NS, Canada</span>
-      </div>
+<section class="tracks">
+  <div class="container">
+    <div class="tracks__heading">
+      <p>Structured Learning</p>
+      <h2>Training Pathways</h2>
+    </div>
+
+    <div class="tracks__grid">
+      <article class="tracks__card" *ngFor="let track of foundationTracks">
+        <h3>{{ track.title }}</h3>
+        <p>{{ track.description }}</p>
+        <a [routerLink]="track.link">{{ track.cta }}</a>
+      </article>
     </div>
   </div>
 </section>
+

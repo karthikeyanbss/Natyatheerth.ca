@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <rect width="100" height="100" rx="14" fill="#1a0a0a"/>
+
+  <!-- Bharatanatyam dancer silhouette in gold -->
+
+  <!-- Head -->
+  <circle cx="52" cy="14" r="7" fill="#D4AF37"/>
+
+  <!-- Crown / hair ornament suggestion -->
+  <path d="M46 10 Q52 4 58 10" stroke="#D4AF37" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <line x1="52" y1="21" x2="50" y2="27" stroke="#D4AF37" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Torso (slight tribhanga lean) -->
+  <path d="M50 27 Q46 37 44 48" stroke="#D4AF37" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Left arm raised (classical raised mudra) -->
+  <path d="M50 30 Q40 22 32 12" stroke="#D4AF37" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <!-- Hand gesture tip -->
+  <circle cx="31" cy="11" r="2.5" fill="#D4AF37"/>
+
+  <!-- Right arm extended sideways -->
+  <path d="M50 32 Q60 34 70 30" stroke="#D4AF37" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <!-- Hand gesture tip -->
+  <circle cx="71" cy="29" r="2.5" fill="#D4AF37"/>
+
+  <!-- Hip -->
+  <path d="M44 48 Q46 52 44 56" stroke="#D4AF37" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Left leg — bent outward (aramandi pose) -->
+  <path d="M44 56 Q34 64 28 72" stroke="#D4AF37" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Left foot -->
+  <path d="M28 72 Q24 76 26 80" stroke="#D4AF37" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Right leg — bent and raised (characteristic step) -->
+  <path d="M44 56 Q54 62 62 70" stroke="#D4AF37" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Right foot raised/pointed -->
+  <path d="M62 70 Q68 72 70 68" stroke="#D4AF37" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Ground line / subtle base -->
+  <line x1="20" y1="86" x2="80" y2="86" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+</svg>
