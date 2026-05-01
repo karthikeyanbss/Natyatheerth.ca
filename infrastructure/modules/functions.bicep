@@ -45,6 +45,9 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
     siteConfig: {
       appSettings: [
         { name: 'AzureWebJobsStorage',       value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=${storageAccount.listKeys().keys[0].value}' }
+        { name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING', value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=${storageAccount.listKeys().keys[0].value}' }
+        { name: 'WEBSITE_CONTENTSHARE',      value: name }
+        { name: 'WEBSITE_RUN_FROM_PACKAGE',  value: '1' }
         { name: 'FUNCTIONS_WORKER_RUNTIME',  value: 'node' }
         { name: 'FUNCTIONS_EXTENSION_VERSION', value: '~4' }
         { name: 'WEBSITE_NODE_DEFAULT_VERSION', value: '~18' }
