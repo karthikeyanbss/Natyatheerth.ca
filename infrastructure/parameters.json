@@ -33,6 +33,17 @@
     "adminEmail": {
       "value": "sruthig@natyatheerth.com"
     },
+    "adminUsername": {
+      "value": "admin"
+    },
+    "adminPasswordHash": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/resourceGroups/natya-theerth-prod-rg/providers/Microsoft.KeyVault/vaults/natyatheerth-prod-kv"
+        },
+        "secretName": "admin-password-hash"
+      }
+    },
     "postgresEntraAdminUser": {
       "value": "karthik@pringa.onmicrosoft.com"
     },

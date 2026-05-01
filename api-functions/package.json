@@ -1,6 +1,7 @@
 {
   "name": "natya-theerth-api",
   "version": "1.0.0",
+  "main": "dist/**/*.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",

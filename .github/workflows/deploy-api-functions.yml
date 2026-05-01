@@ -60,11 +60,13 @@ jobs:
       - name: Check if Azure Function App exists
         id: check-app
         run: |
-          if az functionapp show --name "${{ steps.set-app-name.outputs.app_name }}" --query id --output tsv 2>/dev/null; then
+          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          RG="natya-theerth-${ENV}-rg"
+          if az functionapp show --name "${{ steps.set-app-name.outputs.app_name }}" --resource-group "$RG" --query id --output tsv 2>/dev/null; then
             echo "app_exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "app_exists=false" >> "$GITHUB_OUTPUT"
-            echo "Azure Function App '${{ steps.set-app-name.outputs.app_name }}' not found. Skipping deployment."
+            echo "Azure Function App '${{ steps.set-app-name.outputs.app_name }}' not found in resource group '${RG}'. Skipping deployment."
           fi
 
       - name: Deploy to Azure Functions
