@@ -15,8 +15,8 @@
   "cors": {
     "allowedOrigins": [
       "http://localhost:4200",
-      "https://natyatheerth.ca",
-      "https://www.natyatheerth.ca"
+      "https://natyatheerth.com",
+      "https://www.natyatheerth.com"
     ],
     "supportCredentials": true
   }

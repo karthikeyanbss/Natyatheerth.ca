@@ -2,22 +2,22 @@ param name               string
 param location           string
 param tags               object
 param storageAccountName string
-param postgresHost       string
-param postgresDb         string
-param postgresUser       string
+param postgresHost       string='natyatheerth-dev-psql.postgres.database.azure.com'
+param postgresDb         string='natyatheerth'
+param postgresUser       string='natyaadmin'
 @secure()
-param postgresPassword   string
+param postgresPassword   string='Sruthi@123'
 @secure()
-param jwtSecret          string
-param adminEmail         string
-param adminUsername      string
+param jwtSecret          string='Rishi@123'
+param adminEmail         string='Sruthi@natyatheerth.com'
+param adminUsername      string='Sruthi Ganespandian'
 @secure()
-param adminPasswordHash  string
-param smtpHost           string = ''
+param adminPasswordHash  string='Sruthi@123'
+param smtpHost           string = 'mail.spacemail.com'
 param smtpPort           string = '587'
-param smtpUser           string = ''
+param smtpUser           string = 'Sruthi@natyatheerth.com'
 @secure()
-param smtpPass           string = ''
+param smtpPass           string = 'Sruthi@123'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name:     storageAccountName
@@ -67,7 +67,7 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
       ]
       cors: {
         allowedOrigins: [
-          'https://natyatheerth.ca'
+          'https://natyatheerth.com'
           'https://www.natyatheerth.ca'
         ]
         supportCredentials: true
