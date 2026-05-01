@@ -135,7 +135,9 @@ npm install
 
 # 2. Copy the example settings and fill in your local values
 cp local.settings.json.example local.settings.json
-#    Edit local.settings.json with your PostgreSQL credentials and other secrets
+#    Edit local.settings.json with your PostgreSQL credentials and secrets.
+#    The example file ships with ADMIN_PASSWORD_HASH set to bcrypt("changeme") — change this!
+#    To generate a new hash: node -e "console.log(require('bcryptjs').hashSync('yourpassword',10))"
 
 # 3. Create the database and run migrations
 psql -U postgres -c "CREATE DATABASE natyatheerth;"
@@ -157,7 +159,10 @@ npm start
 | `POSTGRES_PASSWORD` | Database password |
 | `POSTGRES_SSL` | Enable SSL (`true` in production) |
 | `JWT_SECRET` | Secret for signing JWTs |
+| `ADMIN_USERNAME` | Admin login username |
+| `ADMIN_PASSWORD_HASH` | bcrypt hash of the admin password (generate with `node -e "console.log(require('bcryptjs').hashSync('yourpassword',10))"`) |
 | `ADMIN_EMAIL` | Admin email for notifications |
+| `EMAIL_FROM` | Sender address for outgoing emails |
 | `SMTP_HOST` | SMTP server for email |
 | `SMTP_PORT` | SMTP port |
 | `SMTP_USER` | SMTP username |

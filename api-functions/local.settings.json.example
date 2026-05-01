@@ -1,0 +1,26 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+
+    "POSTGRES_HOST": "localhost",
+    "POSTGRES_PORT": "5432",
+    "POSTGRES_DB": "natyatheerth",
+    "POSTGRES_USER": "postgres",
+    "POSTGRES_PASSWORD": "your_postgres_password_here",
+    "POSTGRES_SSL": "false",
+
+    "JWT_SECRET": "your_jwt_secret_here",
+
+    "ADMIN_USERNAME": "admin",
+    "ADMIN_PASSWORD_HASH": "$2a$10$ctcq5rLRyix776Z4bn7.6OszeEGDzfBsfifbt.C/SGLXhqGMLFlmS",
+
+    "ADMIN_EMAIL": "sruthig@natyatheerth.com",
+    "EMAIL_FROM": "noreply@natyatheerth.com",
+    "SMTP_HOST": "smtp.your-email-provider.com",
+    "SMTP_PORT": "587",
+    "SMTP_USER": "your_smtp_username",
+    "SMTP_PASS": "your_smtp_password"
+  }
+}
