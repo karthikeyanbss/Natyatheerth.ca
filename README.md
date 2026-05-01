@@ -195,6 +195,7 @@ az keyvault create \
 
 az keyvault secret set --vault-name natyatheerth-prod-kv --name postgres-admin-password --value "<YOUR_PASSWORD>"
 az keyvault secret set --vault-name natyatheerth-prod-kv --name jwt-secret --value "<YOUR_SECRET>"
+az keyvault secret set --vault-name natyatheerth-prod-kv --name smtp-pass --value "<YOUR_SMTP_APP_PASSWORD>"
 
 # 5. Look up the Entra ID object ID of the PostgreSQL admin user and update parameters.json
 ENTRA_OBJECT_ID=$(az ad user show --id karthik@pringa.onmicrosoft.com --query id -o tsv)

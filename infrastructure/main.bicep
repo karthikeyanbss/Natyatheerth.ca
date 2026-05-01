@@ -36,13 +36,13 @@ param adminUsername string = 'admin'
 param adminPasswordHash string
 
 @description('SMTP host for sending emails')
-param smtpHost string = ''
+param smtpHost string = 'mail.spacemail.com'
 
 @description('SMTP port for sending emails')
 param smtpPort string = '587'
 
 @description('SMTP username for sending emails')
-param smtpUser string = ''
+param smtpUser string = 'Sruthi@natyatheerth.com'
 
 @secure()
 @description('SMTP password for sending emails')
