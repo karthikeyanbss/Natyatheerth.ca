@@ -107,10 +107,10 @@
           <label>Current Level *</label>
           <select formControlName="level">
             <option value="">Select your level...</option>
-            <option value="beginner">Beginner (No prior experience)</option>
-            <option value="elementary">Elementary (1–2 years)</option>
-            <option value="intermediate">Intermediate (3–4 years)</option>
-            <option value="advanced">Advanced (4+ years)</option>
+            <option value="beginner">Beginner</option>
+            <option value="elementary">Elementary</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
             <option value="not_sure">Not Sure</option>
           </select>
           <span *ngIf="hasError(step2Form,'level','required')" class="error-message">Please select a level</span>

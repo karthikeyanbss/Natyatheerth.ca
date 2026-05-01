@@ -1,9 +1,6 @@
 <nav class="navbar" [class.scrolled]="scrolled">
   <div class="navbar__container">
     <a routerLink="/" class="navbar__brand" (click)="closeMenu()">
-      <div class="logo-circle logo-circle--sm">
-        <span class="initials">NT</span>
-      </div>
       <div class="brand-text">
         Natya Theerth
         <span>Kalai Koodam</span>
@@ -11,16 +8,12 @@
     </a>
 
     <ul class="navbar__links" [class.open]="menuOpen">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Home</a></li>
-      <li><a routerLink="/about-guru" routerLinkActive="active" (click)="closeMenu()">About Guru</a></li>
-      <li><a routerLink="/bharatanatyam-levels" routerLinkActive="active" (click)="closeMenu()">Levels</a></li>
-      <li><a routerLink="/adavus" routerLinkActive="active" (click)="closeMenu()">Adavus</a></li>
-      <li><a routerLink="/margam" routerLinkActive="active" (click)="closeMenu()">Margam</a></li>
-      <li><a routerLink="/schedule" routerLinkActive="active" (click)="closeMenu()">Schedule</a></li>
-      <li><a routerLink="/fees" routerLinkActive="active" (click)="closeMenu()">Fees</a></li>
-      <li><a routerLink="/vision" routerLinkActive="active" (click)="closeMenu()">Vision</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact Us</a></li>
-      <li><a routerLink="/register" routerLinkActive="active" class="navbar__cta" (click)="closeMenu()">Register</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">HOME</a></li>
+      <li><a routerLink="/about-guru" routerLinkActive="active" (click)="closeMenu()">GURU</a></li>
+      <li><a routerLink="/vision" routerLinkActive="active" (click)="closeMenu()">VISION</a></li>
+      <li><a routerLink="/bharatanatyam-levels" routerLinkActive="active" (click)="closeMenu()">BHARATANATYAM</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">CONTACT US</a></li>
+      <li><a routerLink="/register" routerLinkActive="active" class="navbar__cta" (click)="closeMenu()">REGISTER</a></li>
     </ul>
 
     <button class="navbar__hamburger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Toggle navigation">
@@ -41,26 +34,22 @@
       <div class="footer__brand">
         <div class="brand-name">Natya Theerth Kalai Koodam</div>
         <p>Where every step tells a story.<br>கலையின் தீர்த்தத்தில் நடனம்</p>
-        <p style="margin-top:0.75rem;font-style:italic;color:rgba(255,255,255,.5)">(Dance in the sacred flow of art)</p>
       </div>
 
       <div>
         <h4>Navigation</h4>
         <ul>
           <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/about-guru">About Guru</a></li>
-          <li><a routerLink="/bharatanatyam-levels">Bharatanatyam Levels</a></li>
-          <li><a routerLink="/adavus">Adavus</a></li>
-          <li><a routerLink="/margam">Margam</a></li>
-          <li><a routerLink="/vision">Our Vision</a></li>
+          <li><a routerLink="/about-guru">Guru</a></li>
+          <li><a routerLink="/vision">Vision</a></li>
+          <li><a routerLink="/bharatanatyam-levels">Bharatanatyam</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
         </ul>
       </div>
 
       <div>
         <h4>Classes</h4>
         <ul>
-          <li><a routerLink="/schedule">Schedule</a></li>
-          <li><a routerLink="/fees">Fees</a></li>
           <li><a routerLink="/register">Register</a></li>
         </ul>
       </div>

@@ -21,10 +21,6 @@
             <p style="font-size:0.85rem;color:var(--color-text-light);font-style:italic">{{ level.tamil }}</p>
           </div>
           <div style="padding:2rem">
-            <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1rem">
-              <span class="badge badge-gold">{{ level.duration }}</span>
-              <span class="badge badge-primary">{{ level.ageGroup }}</span>
-            </div>
             <p style="line-height:1.8;margin-bottom:1rem;color:var(--color-text)">{{ level.description }}</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
               <span *ngFor="let topic of level.topics"
@@ -38,8 +34,9 @@
     </div>
 
     <div style="text-align:center;margin-top:4rem;padding:3rem;background:var(--color-primary);border-radius:var(--radius-lg)">
-      <h3 style="color:var(--color-gold);margin-bottom:1rem">Ready to Begin Your Journey?</h3>
-      <p style="color:var(--color-cream);margin-bottom:2rem">All levels welcome. We'll assess your current ability during an initial class.</p>
+      <h3 style="color:var(--color-gold);margin-bottom:1rem">Ready to Begin Your Bharatanatyam Journey?</h3>
+      <p style="color:var(--color-cream);margin-bottom:0.75rem">All levels welcome. Personalized assessment included.</p>
+      <p style="color:var(--color-cream);font-weight:700;margin-bottom:2rem">Classes start at just $25/hour — register today!</p>
       <a routerLink="/register" class="btn btn-primary btn-lg">Register Now</a>
     </div>
   </div>
