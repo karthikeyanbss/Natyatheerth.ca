@@ -33,7 +33,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: natya-theerth-${{ github.event.inputs.environment }}-rg
           template: infrastructure/main.bicep
-          parameters: infrastructure/parameters.${{ github.event.inputs.environment }}.json
+          parameters: infrastructure/parameters.${{ github.event.inputs.environment }}.json adminPasswordHash=${{ secrets.ADMIN_PASSWORD_HASH }}
           deploymentMode: Validate
 
   deploy:
@@ -60,5 +60,5 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: natya-theerth-${{ github.event.inputs.environment }}-rg
           template: infrastructure/main.bicep
-          parameters: infrastructure/parameters.${{ github.event.inputs.environment }}.json
+          parameters: infrastructure/parameters.${{ github.event.inputs.environment }}.json adminPasswordHash=${{ secrets.ADMIN_PASSWORD_HASH }}
           deploymentName: natya-theerth-${{ github.run_number }}
