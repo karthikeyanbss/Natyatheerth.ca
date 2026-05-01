@@ -68,7 +68,7 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
       cors: {
         allowedOrigins: [
           'https://natyatheerth.com'
-          'https://www.natyatheerth.ca'
+          'https://www.natyatheerth.com'
         ]
         supportCredentials: true
       }

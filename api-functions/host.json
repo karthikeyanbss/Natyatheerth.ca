@@ -12,12 +12,13 @@
       }
     }
   },
-  "cors": {
-    "allowedOrigins": [
-      "http://localhost:4200",
-      "https://natyatheerth.com",
-      "https://www.natyatheerth.com"
-    ],
-    "supportCredentials": true
-  }
+"cors": {
+  "allowedOrigins": [
+    "http://localhost:4200",
+    "https://delightful-rock-04a69ec0f.7.azurestaticapps.net",
+    "https://natyatheerth.com",
+    "https://www.natyatheerth.com"
+  ],
+  "supportCredentials": true
+}
 }
