@@ -2,7 +2,7 @@ name: Deploy Angular Frontend
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev, staging]
     paths:
       - 'frontend-angular/**'
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy Angular App
-    environment: ${{ github.event.inputs.environment || 'prod' }}
+    environment: ${{ github.event.inputs.environment || (github.ref_name == 'main' && 'prod') || github.ref_name }}
     permissions:
       contents: read
       id-token: write
@@ -44,7 +44,14 @@ jobs:
       - name: Set build configuration
         id: set-config
         run: |
-          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ENV="${{ github.event.inputs.environment }}"
+          elif [ "${{ github.ref_name }}" = "main" ]; then
+            ENV="prod"
+          else
+            ENV="${{ github.ref_name }}"
+          fi
+          echo "env_name=${ENV}" >> "$GITHUB_OUTPUT"
           if [ "$ENV" = "prod" ]; then
             echo "ng_config=production" >> "$GITHUB_OUTPUT"
           else
@@ -63,7 +70,7 @@ jobs:
       - name: Set SWA name and resource group
         id: set-app-name
         run: |
-          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          ENV="${{ steps.set-config.outputs.env_name }}"
           echo "swa_name=natyatheerth-${ENV}-web" >> "$GITHUB_OUTPUT"
           echo "rg_name=natya-theerth-${ENV}-rg" >> "$GITHUB_OUTPUT"
 

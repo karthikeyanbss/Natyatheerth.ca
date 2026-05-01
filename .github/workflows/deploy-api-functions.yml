@@ -2,7 +2,7 @@ name: Deploy Azure Functions API
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev, staging]
     paths:
       - 'api-functions/**'
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy Azure Functions
-    environment: ${{ github.event.inputs.environment || 'prod' }}
+    environment: ${{ github.event.inputs.environment || (github.ref_name == 'main' && 'prod') || github.ref_name }}
     permissions:
       contents: read
       id-token: write
@@ -54,13 +54,20 @@ jobs:
       - name: Set function app name
         id: set-app-name
         run: |
-          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ENV="${{ github.event.inputs.environment }}"
+          elif [ "${{ github.ref_name }}" = "main" ]; then
+            ENV="prod"
+          else
+            ENV="${{ github.ref_name }}"
+          fi
           echo "app_name=natyatheerth-${ENV}-functions" >> "$GITHUB_OUTPUT"
+          echo "env_name=${ENV}" >> "$GITHUB_OUTPUT"
 
       - name: Check if Azure Function App exists
         id: check-app
         run: |
-          ENV="${{ github.event.inputs.environment || 'prod' }}"
+          ENV="${{ steps.set-app-name.outputs.env_name }}"
           RG="natya-theerth-${ENV}-rg"
           if az functionapp show --name "${{ steps.set-app-name.outputs.app_name }}" --resource-group "$RG" --query id --output tsv 2>/dev/null; then
             echo "app_exists=true" >> "$GITHUB_OUTPUT"
