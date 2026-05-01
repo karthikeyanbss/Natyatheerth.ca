@@ -143,7 +143,7 @@ psql -U postgres -d natyatheerth -f migrations/001_initial_schema.sql
 
 # 4. Start the Functions host
 npm start
-# API available at http://localhost:7071/api
+# API available at https://natyatheerth-dev-functions.azurewebsites.net/api
 ```
 
 ### Environment Variables
@@ -195,10 +195,6 @@ az keyvault create \
 
 az keyvault secret set --vault-name natyatheerth-prod-kv --name postgres-admin-password --value "<YOUR_PASSWORD>"
 az keyvault secret set --vault-name natyatheerth-prod-kv --name jwt-secret --value "<YOUR_SECRET>"
-
-# Generate and store the bcrypt hash of the admin password
-ADMIN_HASH=$(node -e "const b=require('bcryptjs');console.log(b.hashSync('<YOUR_ADMIN_PASSWORD>',10))")
-az keyvault secret set --vault-name natyatheerth-prod-kv --name admin-password-hash --value "$ADMIN_HASH"
 
 # 5. Look up the Entra ID object ID of the PostgreSQL admin user and update parameters.json
 ENTRA_OBJECT_ID=$(az ad user show --id karthik@pringa.onmicrosoft.com --query id -o tsv)
