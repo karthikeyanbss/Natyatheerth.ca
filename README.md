@@ -10,7 +10,7 @@ Classical Bharatanatyam dance school based in **Halifax, Nova Scotia, Canada**, 
 ## 📂 Repository Structure
 
 ```
-Natyatheerth.ca/
+natyatheerth.com/
 ├── frontend-angular/        # Angular 17 web application
 ├── mobile-ionic/            # Ionic + Angular mobile app (Android/iOS)
 ├── api-functions/           # Azure Functions (TypeScript) REST API
@@ -208,7 +208,13 @@ az deployment group create \
   --parameters infrastructure/parameters.json
 ```
 
-> **Azure Portal:** https://portal.azure.com/#@pringa.onmicrosoft.com/resource/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/overview
+
+
+
+
+
+
+> **Azure Portal:** https://portal.azure.com/#@pringa.onmicrosoft.com/resource/subscriptions/c7db7efa-b163-448a-8af0-23062dc21f5a/o   verview
 
 ---
 
@@ -246,7 +252,7 @@ az deployment group create \
 | **Email** | sruthi@natyatheerth.com |
 | **Phone** | +1 902-441-8675 |
 | **Location** | Halifax, NS, Canada |
-| **Website** | https://natyatheerth.ca |
+| **Website** | https://natyatheerth.com |
 
 ---
 
