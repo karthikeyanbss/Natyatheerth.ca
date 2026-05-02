@@ -16,31 +16,10 @@ export class HomeComponent {
     'assets/Gallery/gallery image 5.jpg',
     'assets/Gallery/gallery image 6.jpg',
     'assets/Gallery/gallery image 7.jpg',
-    'assets/Gallery/gallery image 8.JPG',
-    'assets/Gallery/gallery image 9.JPG',
-    'assets/Gallery/gallery image 10JPG.JPG'
+    'assets/Gallery/New Image_may 2.jpg'
   ];
 
-  readonly foundationTracks: Array<{ title: string; description: string; link: string; cta: string }> = [
-    {
-      title: 'Beginner Foundation',
-      description: 'Strong basics in posture, rhythm, adavus, and stage confidence for children and adults.',
-      link: '/bharatanatyam-levels',
-      cta: 'View Levels'
-    },
-    {
-      title: 'Performance Training',
-      description: 'Structured margam progression with abhinaya coaching and rehearsal-focused classes.',
-      link: '/margam',
-      cta: 'Explore Margam'
-    },
-    {
-      title: 'Flexible Learning',
-      description: 'Group, one-on-one, and online options designed for families with busy schedules.',
-      link: '/register',
-      cta: 'Enroll Now'
-    }
-  ];
+  selectedGalleryImage: string | null = null;
 
   constructor(private router: Router) {}
 
@@ -50,5 +29,13 @@ export class HomeComponent {
 
   goToContact(): void {
     this.router.navigate(['/contact']);
+  }
+
+  openGalleryImage(image: string): void {
+    this.selectedGalleryImage = image;
+  }
+
+  closeGalleryImage(): void {
+    this.selectedGalleryImage = null;
   }
 }

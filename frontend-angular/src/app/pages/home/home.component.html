@@ -6,6 +6,7 @@
       <p class="home-hero__kicker">Bharatanatyam</p>
       <h1>Natya Theerth Kalai Koodam</h1>
       <p class="home-hero__line">Where every step tells a story</p>
+      <p class="home-hero__tamil">கலையின் தீர்த்தத்தில் நடனம்</p>
 
       <div class="home-hero__actions">
         <button class="btn btn-primary btn-lg" (click)="goToRegister()">Join Us</button>
@@ -55,29 +56,64 @@
   <div class="container">
     <div class="stage-gallery__heading">
       <p>Performance Moments</p>
-      <h2>Life On Stage</h2>
+      <h2>Life on Stage</h2>
     </div>
 
     <div class="stage-gallery__grid">
       <article class="stage-gallery__tile" *ngFor="let image of stageImages; let i = index">
-        <img [src]="image" [alt]="'Bharatanatyam performance image ' + (i + 1)">
+        <img
+          [src]="image"
+          [alt]="'Bharatanatyam performance image ' + (i + 1)"
+          (click)="openGalleryImage(image)">
       </article>
     </div>
   </div>
 </section>
 
-<section class="tracks">
+<div class="gallery-lightbox" *ngIf="selectedGalleryImage" (click)="closeGalleryImage()">
+  <div class="gallery-lightbox__panel" (click)="$event.stopPropagation()">
+    <button class="gallery-lightbox__close" type="button" (click)="closeGalleryImage()" aria-label="Close image preview">
+      ×
+    </button>
+    <img [src]="selectedGalleryImage" alt="Selected Bharatanatyam performance image">
+  </div>
+</div>
+
+<section class="join-classes">
   <div class="container">
-    <div class="tracks__heading">
-      <p>Structured Learning</p>
-      <h2>Training Pathways</h2>
+    <div class="join-classes__heading">
+      <h2>Join our classes</h2>
+      <p>Discover the right class for your journey.</p>
     </div>
 
-    <div class="tracks__grid">
-      <article class="tracks__card" *ngFor="let track of foundationTracks">
-        <h3>{{ track.title }}</h3>
-        <p>{{ track.description }}</p>
-        <a [routerLink]="track.link">{{ track.cta }}</a>
+    <div class="join-classes__grid">
+      <article class="join-classes__card">
+        <h3>Children (5+)</h3>
+        <p>
+          Specially designed classes for children aged 5 and above. Develop rhythm, coordination,
+          and a love for classical dance in a fun and nurturing environment.
+        </p>
+        <button class="btn btn-primary" (click)="goToRegister()">Enroll Now</button>
+      </article>
+
+      <article class="join-classes__card">
+        <h3>Women’s special classes</h3>
+        <p>
+          Dedicated sessions for women of all ages. Whether you are a beginner or returning to dance,
+          these classes provide a welcoming space to explore Bharatanatyam.
+        </p>
+        <button class="btn btn-primary" (click)="goToRegister()">Enroll Now</button>
+      </article>
+
+      <article class="join-classes__card">
+        <h3>Flexible format</h3>
+        <ul>
+          <li>Group Classes</li>
+          <li>Private One-on-One Sessions</li>
+          <li>Online Classes (via Video Call)</li>
+          <li>Workshop &amp; Performance Training</li>
+        </ul>
+        <button class="btn btn-primary" (click)="goToRegister()">Enroll Now</button>
       </article>
     </div>
   </div>
