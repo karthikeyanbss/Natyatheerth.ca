@@ -10,7 +10,7 @@ on:
       environment:
         description: 'Target environment'
         required: true
-        default: 'prod'
+        default: 'dev'
         type: choice
         options: ['dev', 'staging', 'prod']
 
@@ -21,7 +21,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy Angular App
-    environment: ${{ github.event.inputs.environment || (github.ref_name == 'main' && 'prod') || github.ref_name }}
+    environment: ${{ github.event.inputs.environment || (github.ref_name == 'main' && 'dev') || github.ref_name }}
     permissions:
       contents: read
       id-token: write
@@ -47,7 +47,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             ENV="${{ github.event.inputs.environment }}"
           elif [ "${{ github.ref_name }}" = "main" ]; then
-            ENV="prod"
+            ENV="dev"
           else
             ENV="${{ github.ref_name }}"
           fi

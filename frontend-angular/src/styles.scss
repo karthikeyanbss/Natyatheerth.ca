@@ -500,6 +500,17 @@ table {
     p { color: rgba(255,255,255,.5); font-size: 0.85rem; }
   }
 
+  &__credit {
+    a {
+      color: rgba(255, 255, 255, 0.75);
+      margin-left: 0.35rem;
+
+      &:hover {
+        color: var(--color-gold);
+      }
+    }
+  }
+
   @media (max-width: 640px) {
     &__grid {
       gap: 2rem;
