@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 interface Level {
   name: string;
+  subtitle?: string;
   tamil: string;
   duration: string;
   ageGroup: string;
@@ -55,7 +56,8 @@ export class BharatanatyamLevelsComponent {
       color: '#e9d8fd'
     },
     {
-      name: 'Margam (Arangetram)',
+      name: 'Margam',
+      subtitle: 'Arangetram',
       tamil: 'மார்கம்',
       duration: 'Preparation: 1 year',
       ageGroup: 'Advanced students',

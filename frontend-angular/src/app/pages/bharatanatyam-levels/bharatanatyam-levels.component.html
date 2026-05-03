@@ -14,11 +14,12 @@
     <div style="display:flex;flex-direction:column;gap:2rem">
       <div *ngFor="let level of levels; let i = index"
            style="background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);overflow:hidden">
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:0">
-          <div [style.background]="level.color" style="padding:2rem;min-width:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <div style="display:flex;gap:0">
+          <div [style.background]="level.color" style="padding:2rem;width:180px;flex:0 0 180px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
             <div style="font-size:2.5rem;font-weight:700;color:var(--color-primary)">0{{ i + 1 }}</div>
-            <h3 style="color:var(--color-primary);margin-bottom:0.25rem">{{ level.name }}</h3>
-            <p style="font-size:0.85rem;color:var(--color-text-light);font-style:italic">{{ level.tamil }}</p>
+            <h3 style="color:var(--color-primary);margin-bottom:0.15rem">{{ level.name }}</h3>
+            <p *ngIf="level.subtitle" style="color:var(--color-primary);font-weight:600;margin-bottom:0.15rem;font-size:0.95rem">{{ level.subtitle }}</p>
+            <p style="font-size:0.85rem;color:var(--color-text-light);font-style:italic;margin-bottom:0">{{ level.tamil }}</p>
           </div>
           <div style="padding:2rem">
             <p style="line-height:1.8;margin-bottom:1rem;color:var(--color-text)">{{ level.description }}</p>
