@@ -175,6 +175,16 @@ npm start
 | Azure Database for PostgreSQL Flexible Server | Database (v15, Burstable B1ms) |
 | Azure Storage Account | Function app storage + media |
 
+### PostgreSQL Extensions
+
+The Bicep template automatically allowlists the following PostgreSQL extensions via the `azure.extensions` server parameter so that `CREATE EXTENSION` succeeds during schema migration:
+
+| Extension | Purpose |
+|-----------|---------|
+| `uuid-ossp` | UUID generation (`uuid_generate_v4()`) used as primary keys in all tables |
+
+> **Note:** Azure Database for PostgreSQL Flexible Server requires extensions to be **allowlisted** at the server level (via the `azure.extensions` configuration parameter) before they can be activated with `CREATE EXTENSION` in a database. The Bicep module (`infrastructure/modules/postgresql.bicep`) sets this automatically on deployment. No manual step is required.
+
 ### Deploy to Azure
 
 ```bash
